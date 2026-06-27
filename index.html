@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадьба Вероники · Рестораны Риги · ТОП-5</title>
+<style>
+  :root{
+    --bg:#fbf7f2; --card:#ffffff; --ink:#2e2a26; --muted:#6f675f;
+    --line:#e9ddd0; --blush:#c98a86; --blush-soft:#f3e3e1; --gold:#b08a4e;
+    --green:#3f7d5a; --green-soft:#e7f1ea; --shadow:0 6px 24px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1060px; margin:0 auto; padding:0 18px 64px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:600; line-height:1.2}
+  a{color:var(--blush); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* header */
+  header.hero{
+    text-align:center; padding:54px 18px 40px;
+    background:linear-gradient(180deg,#fff 0%,var(--blush-soft) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .mono{letter-spacing:.32em; text-transform:uppercase; font-size:12px; color:var(--gold)}
+  .hero h1{font-size:clamp(30px,6vw,52px); margin:.18em 0 .12em; color:var(--ink)}
+  .hero .sub{color:var(--muted); font-style:italic; font-size:18px}
+  .facts{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:20px}
+  .facts span{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:6px 14px; font-size:13px; color:var(--ink); box-shadow:var(--shadow)
+  }
+
+  section{margin-top:46px}
+  h2{font-size:clamp(22px,3.6vw,30px); margin:0 0 6px; position:relative; padding-left:16px}
+  h2::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px;
+    background:var(--blush); border-radius:4px}
+  .lead{color:var(--muted); margin:0 0 18px}
+
+  .pill{display:inline-block; background:var(--blush-soft); color:#9a4f4b;
+    border-radius:6px; padding:2px 9px; font-size:12px; font-weight:600; margin:2px 4px 2px 0}
+  .pill.ok{background:var(--green-soft); color:var(--green)}
+  .pill.warn{background:#fbecd6; color:#9a6a1e}
+
+  /* filters */
+  .filters{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .filters .f{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px; box-shadow:var(--shadow)}
+  .filters .f b{display:block; color:var(--blush); font-size:13px; letter-spacing:.04em; text-transform:uppercase}
+  .filters .f p{margin:6px 0 0; font-size:14px; color:var(--ink)}
+
+  /* cards */
+  .cards{display:grid; grid-template-columns:1fr; gap:18px}
+  .rest{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px 22px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+  .rest.best{border:2px solid var(--gold); background:linear-gradient(180deg,#fffdf8,#fff)}
+  .rest .rank{font-family:Georgia,serif; font-size:13px; color:var(--gold); font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase}
+  .rest h3{font-size:23px; margin:2px 0 4px}
+  .rest .cuisine{color:var(--muted); font-size:14px; margin:0 0 12px}
+  .rest .score{position:absolute; top:18px; right:20px; text-align:center}
+  .rest .score b{display:block; font-family:Georgia,serif; font-size:26px; color:var(--ink); line-height:1}
+  .rest .score small{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em}
+  .rest .row{display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; margin:10px 0; font-size:14px}
+  .rest .row div b{color:var(--ink)}
+  .rest .pm{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px}
+  .rest .pm .plus,.rest .pm .minus{font-size:13.5px; padding:10px 12px; border-radius:10px}
+  .rest .pm .plus{background:var(--green-soft)}
+  .rest .pm .minus{background:#fbecec}
+  .rest .pm b{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px}
+  .rest .pm .plus b{color:var(--green)} .rest .pm .minus b{color:#a8403c}
+  .rest .contact{margin-top:12px; font-size:13.5px; color:var(--muted); border-top:1px dashed var(--line); padding-top:10px}
+  .crown{display:inline-block; background:var(--gold); color:#fff; font-size:11px; font-weight:700;
+    padding:3px 10px; border-radius:999px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:6px}
+
+  /* tables */
+  .scroll{overflow-x:auto; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); background:#fff}
+  table{border-collapse:collapse; width:100%; min-width:640px; font-size:13.5px}
+  th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line)}
+  thead th{background:#f6ece2; color:var(--ink); font-family:Georgia,serif; font-weight:600; position:sticky; top:0}
+  tbody tr:nth-child(even){background:#fdf9f4}
+  td.c,th.c{text-align:center}
+  .total td{font-weight:700; background:#f3e9dc !important; border-top:2px solid var(--gold)}
+  col.best-col, td.best-cell{background:#fdf6e6}
+  .winrow td{color:var(--gold); font-weight:700}
+
+  /* budget */
+  .budgets{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .budget{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; box-shadow:var(--shadow)}
+  .budget.opt{border:2px solid var(--green)}
+  .budget h3{font-size:18px; margin:0 0 2px}
+  .budget .tag{font-size:12px; color:var(--muted); margin-bottom:12px}
+  .budget table{min-width:0; font-size:13px}
+  .budget td{border-bottom:1px dashed var(--line); padding:6px 0}
+  .budget .sum td{font-weight:700; border-bottom:none; border-top:2px solid var(--line); padding-top:9px}
+  .budget .sep{font-size:12px; color:var(--muted); margin-top:10px; border-top:1px solid var(--line); padding-top:8px}
+
+  /* checklist / timeline */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
+  .box h3{margin:0 0 10px; font-size:18px}
+  .box ul{margin:0; padding-left:18px} .box li{margin:6px 0; font-size:14px}
+  ol.timeline{counter-reset:step; list-style:none; padding:0; margin:0}
+  ol.timeline li{position:relative; padding:0 0 14px 34px; font-size:14px}
+  ol.timeline li::before{counter-increment:step; content:counter(step);
+    position:absolute; left:0; top:0; width:24px; height:24px; border-radius:50%;
+    background:var(--blush); color:#fff; font-weight:700; font-size:13px;
+    display:flex; align-items:center; justify-content:center}
+
+  /* scripts */
+  .script{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px;
+    box-shadow:var(--shadow); margin-bottom:14px}
+  .script h3{margin:0 0 8px; font-size:16px}
+  .script pre{white-space:pre-wrap; font-family:"SF Mono",Menlo,Consolas,monospace; font-size:12.5px;
+    background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px; margin:0; color:#3a342e}
+
+  .contacts-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+  .ct{background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:13.5px; box-shadow:var(--shadow)}
+  .ct b{display:block; margin-bottom:4px}
+
+  .src{font-size:12.5px; color:var(--muted); columns:2; column-gap:28px}
+  .src a{display:block; margin-bottom:5px}
+
+  footer{margin-top:48px; text-align:center; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line); padding-top:20px}
+  .disclaimer{background:#fff8ef; border:1px solid #f0e0c6; border-radius:12px; padding:14px 16px;
+    font-size:13px; color:#7a6748; margin-top:18px}
+
+  @media(max-width:820px){
+    .filters,.budgets{grid-template-columns:1fr}
+    .two,.contacts-grid,.src{grid-template-columns:1fr; columns:1}
+    .rest .row,.rest .pm{grid-template-columns:1fr}
+    .rest .score{position:static; text-align:left; margin-bottom:8px}
+  }
+  @media print{
+    body{background:#fff} .scroll,.rest,.budget,.box,.script,.f,.ct{box-shadow:none}
+    a{color:var(--ink)} header.hero{background:#fff}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mono">Камерный свадебный ужин · Рига</div>
+  <h1>Свадьба Вероники</h1>
+  <div class="sub">Подбор ресторана — аналитический свод и рекомендация</div>
+  <div class="facts">
+    <span>📅 Суббота, 12.09.2026</span>
+    <span>🕕 18:00</span>
+    <span>👥 10 гостей</span>
+    <span>💶 до 1500 € на ресторан</span>
+    <span>🍽 банкет, без tasting</span>
+    <span>🚪 изолированный зал</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ВЫВОД -->
+  <section id="summary">
+    <h2>Краткий вывод</h2>
+    <p class="lead">Свод 4 независимых отчётов (от разных ИИ) + проверка актуальности в июне 2026.
+    Под ваши условия отобраны места, которые <b>одновременно</b> дают изолированный зал, банкет
+    «закуски → горячее» (без дегустационного меню) и широкую карту, чтобы устроило и родителей,
+    и невесту. Все пять работают и укладываются в бюджет.</p>
+
+    <div class="filters">
+      <div class="f"><b>1 · Формат</b><p>Только банкет «закуски → основное». Дегустационные меню
+        (Entresol, 3&nbsp;Chefs, Max&nbsp;Cekot) исключены — для родителей риск.</p></div>
+      <div class="f"><b>2 · Приватность</b><p>Обязательна полностью изолированная комната/этаж.
+        Neiburgs и Riviera исключены — у них только «тихая зона».</p></div>
+      <div class="f"><b>3 · Еда-компромисс</b><p>Широкая карта: и узнаваемое сытное (родителям),
+        и элегантная подача (Веронике).</p></div>
+    </div>
+
+    <div class="disclaimer">
+      🏆 <b>Лучший выбор по сумме баллов — Kaļķu vārti (8.9/10):</b> свой изолированный этаж,
+      самая широкая банкетная карта и самый безопасный бюджет (€53/чел из опубликованного меню).
+      Вплотную — <b>Kolonāde (8.8)</b>, лучший по фото и атмосфере. <b>SNOB (8.5)</b> — лучший сервис 5★.
+    </div>
+  </section>
+
+  <!-- ТОП-5 КАРТОЧКИ -->
+  <section id="top5">
+    <h2>ТОП-5 ресторанов</h2>
+    <p class="lead">Каждый — с подтверждённым изолированным залом, банкетным форматом и работой в 2026.</p>
+    <div class="cards">
+
+      <!-- 1 -->
+      <div class="rest">
+        <div class="score"><b>8.8</b><small>из 10</small></div>
+        <div class="rank">🥇 № 1</div>
+        <h3>Kolonāde. Mūsu stāsti</h3>
+        <p class="cuisine">Гурмэ латвийская + интернациональная · Центр (Brīvības laukums 1)</p>
+        <div class="row">
+          <div><b>Приватность:</b> малый зал + банкетный зал + полный event-сервис</div>
+          <div><b>Цена:</b> ~€40–60/чел (Restaurant Week 3 курса ~€40)</div>
+          <div><b>Часы сб:</b> 12:00–23:00</div>
+          <div><b>Фото:</b> вид на Оперу и Памятник Свободы</div>
+        </div>
+        <span class="pill ok">изолированный зал</span><span class="pill ok">event-сервис</span>
+        <span class="pill ok">лучшие фото</span>
+        <div class="pm">
+          <div class="plus"><b>Плюс</b>Лучший свадебный фон Риги + полный event-сервис (свет/звук/мебель)</div>
+          <div class="minus"><b>Минус</b>Уточнить именно приватную (не проходную) зону</div>
+        </div>
+        <div class="contact">📞 <a href="tel:+37126608882">+371 26608882</a> ·
+          🔗 <a href="https://www.meetriga.com/en/7604-kolonade-musu-stasti-kolonade-our-story" target="_blank" rel="noopener">meetriga.com</a></div>
+      </div>
+
+      <!-- 2 BEST -->
+      <div class="rest best">
+        <div class="score"><b>8.9</b><small>из 10</small></div>
+        <div class="rank">🥈 № 2 · <span style="color:var(--gold)">🏆 лучший по баллам</span></div>
+        <span class="crown">Рекомендация</span>
+        <h3>Kaļķu vārti</h3>
+        <p class="cuisine">Широкая европейская + латвийская · Старый город (Jauniela 20)</p>
+        <div class="row">
+          <div><b>Приватность:</b> свой этаж — 2-й до 50 / 3-й до 70 гостей</div>
+          <div><b>Цена:</b> закуски €10–32 · горячее €18–38 · десерт €9 → ~€53/чел</div>
+          <div><b>Часы сб:</b> 12:00–23:30</div>
+          <div><b>Фото:</b> здание 17 в. у Домской площади</div>
+        </div>
+        <span class="pill ok">свой изолированный этаж</span><span class="pill ok">широкая карта</span>
+        <span class="pill ok">цены из меню</span><span class="pill ok">безопасный бюджет</span>
+        <div class="pm">
+          <div class="plus"><b>Плюс</b>Лучший food-компромисс + максимальная приватность + большой запас бюджета</div>
+          <div class="minus"><b>Минус</b>Часть отзывов отмечает «дороговато» по а-ля-карт позициям</div>
+        </div>
+        <div class="contact">📞 <a href="tel:+37167224576">+371 67224576</a> /
+          <a href="tel:+37122441614">+371 22441614</a> ·
+          ✉️ <a href="mailto:catering@kalkuvarti.lv">catering@kalkuvarti.lv</a> ·
+          🔗 <a href="https://kalkuvarti.lv/en/" target="_blank" rel="noopener">kalkuvarti.lv</a></div>
+      </div>
+
+      <!-- 3 -->
+      <div class="rest">
+        <div class="score"><b>8.5</b><small>из 10</small></div>
+        <div class="rank">🥉 № 3</div>
+        <h3>SNOB · Grand Poet Hotel 5★</h3>
+        <p class="cuisine">Современная авторская · Центр (Raiņa b. 5/6)</p>
+        <div class="row">
+          <div><b>Приватность:</b> Private Dining + банкетный зал, группы до 86</div>
+          <div><b>Цена:</b> премиум (публично не указана — уточнить)</div>
+          <div><b>Часы:</b> 12:00–22:00 (LO 21:30)</div>
+          <div><b>Фото:</b> богемный интерьер, двор «Secret Garden»</div>
+        </div>
+        <span class="pill ok">Private Dining</span><span class="pill ok">сервис 5★</span>
+        <span class="pill warn">закрытие 22:00 — уточнить продление</span>
+        <div class="pm">
+          <div class="plus"><b>Плюс</b>Лучший сервис и приватность 5★; можно продолжить вечер в баре / номере отеля</div>
+          <div class="minus"><b>Минус</b>Премиум-бюджет; кухня «авторская» — менее «родительская»</div>
+        </div>
+        <div class="contact">📞 <a href="tel:+37160008606">+371 60008606</a> ·
+          события <a href="tel:+37126445079">+371 26445079</a> ·
+          ✉️ <a href="mailto:snob@semarahhotels.com">snob@semarahhotels.com</a></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="rest">
+        <div class="score"><b>7.8</b><small>из 10</small></div>
+        <div class="rank">№ 4</div>
+        <h3>Bergs · Hotel Bergs 5★ SLH</h3>
+        <p class="cuisine">Сезонная европейская · Berga Bazārs (Elizabetes 83/85)</p>
+        <div class="row">
+          <div><b>Приватность:</b> отдельный малый зал на входе + банкетный зал</div>
+          <div><b>Цена:</b> ~€60–90/чел</div>
+          <div><b>Часы:</b> по запросу</div>
+          <div><b>Фото:</b> тихий двор Berga Bazārs</div>
+        </div>
+        <span class="pill ok">изолированный зал</span><span class="pill ok">сервис SLH</span>
+        <div class="pm">
+          <div class="plus"><b>Плюс</b>Сервис уровня Small Luxury Hotels; меню «cater to every palate»</div>
+          <div class="minus"><b>Минус</b>Сам ресторан малопрофильный (~60 отзывов) — кухня менее обкатана</div>
+        </div>
+        <div class="contact">🔗 <a href="https://hotelbergs.lv/" target="_blank" rel="noopener">hotelbergs.lv</a></div>
+      </div>
+
+      <!-- 5 -->
+      <div class="rest">
+        <div class="score"><b>7.8</b><small>из 10</small></div>
+        <div class="rank">№ 5</div>
+        <h3>Le Dome · Dome Hotel</h3>
+        <p class="cuisine">Французско-средиземноморская (рыба) · Старый город (Miesnieku 4)</p>
+        <div class="row">
+          <div><b>Приватность:</b> банкетный зал отеля / выкуп зала</div>
+          <div><b>Цена:</b> ~€40–70/чел (бюджет впритык)</div>
+          <div><b>Терраса:</b> rooftop апр–окт (12.09 актуальна)</div>
+          <div><b>Фото:</b> здание 400 лет, вид на Домский собор</div>
+        </div>
+        <span class="pill ok">à-la-carte (не tasting)</span><span class="pill ok">Michelin-selected</span>
+        <span class="pill warn">рыбный уклон</span>
+        <div class="pm">
+          <div class="plus"><b>Плюс</b>Самый романтичный интерьер + rooftop-вид; высокий уровень кухни</div>
+          <div class="minus"><b>Минус</b>Рыбный уклон не всем родителям; полная изоляция — через зал отеля/выкуп</div>
+        </div>
+        <div class="contact">📞 <a href="tel:+37125441551">+371 25441551</a> ·
+          🔗 <a href="https://www.domehotel.lv/en/restaurant" target="_blank" rel="noopener">domehotel.lv</a></div>
+      </div>
+
+    </div>
+    <p class="lead" style="margin-top:14px"><b>Резерв:</b> Fabrikas (Кипсала, лофт у Даугавы, кейтеринг — изолир. зал уточнить).
+      <b>Исключено:</b> Neiburgs, Riviera (нет изолир. зала) · Entresol, 3&nbsp;Chefs, Max&nbsp;Cekot (tasting) ·
+      Vincents (закрыт) · Bibliotēka&nbsp;No1 (статус неясен) · Snatch (шумно).</p>
+  </section>
+
+  <!-- СРАВНИТЕЛЬНАЯ ТАБЛИЦА -->
+  <section id="compare">
+    <h2>Сравнительная таблица ТОП-5</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr>
+          <th>Место</th><th>Изолир. зал</th><th>Формат еды</th><th class="c">Ср. чек</th>
+          <th class="c">На 10 чел (еда)</th><th>Свой торт*</th><th>Свой алкоголь*</th>
+          <th>Депозит*</th><th>Парковка</th><th>Главный плюс</th><th>Главный минус</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><b>Kolonāde</b></td><td>малый + банкетный зал</td><td>банкет латв./интернац.</td><td class="c">€40–60</td><td class="c">€400–600</td><td>уточнить</td><td>уточнить</td><td>уточнить</td><td>парк/улица</td><td>лучшие фото</td><td>часть зала проходная</td></tr>
+          <tr style="background:#fdf6e6"><td><b>Kaļķu vārti</b> 🏆</td><td>свой этаж (50/70)</td><td>широкий à-la-carte/банкет</td><td class="c">€53</td><td class="c">€530</td><td>уточнить</td><td>уточнить</td><td>уточнить</td><td>Старый город</td><td>food-компромисс + приватность</td><td>а-ля-карт «дороговато»</td></tr>
+          <tr><td><b>SNOB</b> 5★</td><td>Private Dining + банкет</td><td>авторский à-la-carte</td><td class="c">премиум</td><td class="c">€700–900</td><td>уточнить</td><td>уточнить</td><td>вероятен min spend</td><td>при отеле</td><td>сервис 5★</td><td>закрытие 22:00</td></tr>
+          <tr><td><b>Bergs</b> SLH</td><td>малый + банкетный зал</td><td>сезонный банкет</td><td class="c">€60–90</td><td class="c">€600–900</td><td>уточнить</td><td>уточнить</td><td>уточнить</td><td>отель/улица</td><td>сервис SLH</td><td>малопрофильная кухня</td></tr>
+          <tr><td><b>Le Dome</b></td><td>зал отеля / выкуп</td><td>à-la-carte (рыба)</td><td class="c">€40–70</td><td class="c">€500–700</td><td>уточнить</td><td>уточнить</td><td>вероятен высокий</td><td>Старый город</td><td>романтика + rooftop</td><td>рыбный уклон, бюджет впритык</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="font-size:13px;margin-top:8px">* Условия по торту/алкоголю/депозиту нигде публично не опубликованы — уточняются прямым письмом (см. скрипт ниже).</p>
+  </section>
+
+  <!-- ОЦЕНКИ 10 ПАРАМЕТРОВ -->
+  <section id="scores">
+    <h2>Оценки по 10 параметрам (0–10)</h2>
+    <p class="lead">Приватность и «банкет + food-компромисс» весят наравне с кухней и сервисом — под ваши требования.</p>
+    <div class="scroll">
+      <table>
+        <colgroup><col><col><col class="best-col"><col><col><col></colgroup>
+        <thead><tr>
+          <th>Параметр</th><th class="c">Kolonāde</th><th class="c">Kaļķu vārti 🏆</th>
+          <th class="c">SNOB</th><th class="c">Bergs</th><th class="c">Le Dome</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>1. Цена / запас бюджета</td><td class="c">8</td><td class="c best-cell">9</td><td class="c">6</td><td class="c">6</td><td class="c">6</td></tr>
+          <tr><td>2. Качество кухни</td><td class="c">8</td><td class="c best-cell">8</td><td class="c">9</td><td class="c">7</td><td class="c">9</td></tr>
+          <tr><td>3. Сервис</td><td class="c">9</td><td class="c best-cell">8</td><td class="c">10</td><td class="c">9</td><td class="c">9</td></tr>
+          <tr><td>4. Атмосфера</td><td class="c">10</td><td class="c best-cell">9</td><td class="c">9</td><td class="c">8</td><td class="c">9</td></tr>
+          <tr><td>5. Интерьер / фото</td><td class="c">10</td><td class="c best-cell">9</td><td class="c">10</td><td class="c">8</td><td class="c">9</td></tr>
+          <tr><td>6. Расположение / логистика</td><td class="c">9</td><td class="c best-cell">9</td><td class="c">9</td><td class="c">8</td><td class="c">9</td></tr>
+          <tr><td>7. Приватность (изолир. зал)</td><td class="c">9</td><td class="c best-cell">10</td><td class="c">10</td><td class="c">9</td><td class="c">7</td></tr>
+          <tr><td>8. Гибкость условий</td><td class="c">8</td><td class="c best-cell">9</td><td class="c">8</td><td class="c">8</td><td class="c">7</td></tr>
+          <tr><td>9. Банкет без tasting + food-компромисс</td><td class="c">9</td><td class="c best-cell">10</td><td class="c">7</td><td class="c">8</td><td class="c">7</td></tr>
+          <tr><td>10. Низкий риск скрытых расходов</td><td class="c">8</td><td class="c best-cell">8</td><td class="c">7</td><td class="c">7</td><td class="c">6</td></tr>
+          <tr class="total"><td>ИТОГО (среднее)</td><td class="c">8.8</td><td class="c">8.9</td><td class="c">8.5</td><td class="c">7.8</td><td class="c">7.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="disclaimer" style="margin-top:16px">
+      🏆 <b>Лучший выбор: Kaļķu vārti — 8.9/10.</b> Выигрывает на обязательных для вас критериях:
+      максимальная приватность (свой изолированный этаж), лучший банкет-компромисс (широкая европейская
+      карта «закуски → горячее») и самый безопасный бюджет (€53/чел из опубликованного меню).
+      Если приоритет — <b>свадебные фото</b>, равноценная альтернатива — <b>Kolonāde (8.8)</b>.
+      Если важнее всего <b>сервис 5★</b> и бюджет премиальный — <b>SNOB (8.5)</b>.
+    </div>
+  </section>
+
+  <!-- БЮДЖЕТ -->
+  <section id="budget">
+    <h2>Смета — 3 варианта</h2>
+    <p class="lead">Лимит 1500 € — это <b>только ресторан</b> (еда + напитки + сервис). Торт, декор и фотограф считаются отдельно.</p>
+    <div class="budgets">
+      <div class="budget">
+        <h3>A · Экономно, но красиво</h3>
+        <div class="tag">база: Kaļķu vārti / Kolonāde 3 курса</div>
+        <table>
+          <tr><td>Банкет (10×53€)</td><td style="text-align:right">530 €</td></tr>
+          <tr><td>Напитки</td><td style="text-align:right">230 €</td></tr>
+          <tr><td>Сервис/чаевые ~10%</td><td style="text-align:right">76 €</td></tr>
+          <tr class="sum"><td>Ресторан</td><td style="text-align:right">~836 € ✅</td></tr>
+        </table>
+        <div class="sep">Отдельно: торт 90 € · декор 120 € · резерв 100 €<br><b>Запас до лимита: ~664 €</b></div>
+      </div>
+      <div class="budget opt">
+        <h3>B · Оптимальный <span class="pill ok">рекомендуется</span></h3>
+        <div class="tag">база: Kolonāde банкет / Kaļķu vārti расширенное</div>
+        <table>
+          <tr><td>Банкет (10×65€)</td><td style="text-align:right">650 €</td></tr>
+          <tr><td>Напитки (+welcome-игристое)</td><td style="text-align:right">350 €</td></tr>
+          <tr><td>Сервис ~10%</td><td style="text-align:right">100 €</td></tr>
+          <tr class="sum"><td>Ресторан</td><td style="text-align:right">~1100 € ✅</td></tr>
+        </table>
+        <div class="sep">Отдельно: торт 120 € · декор 180 € · резерв 150 €<br><b>Запас до лимита: ~400 €</b></div>
+      </div>
+      <div class="budget">
+        <h3>C · Премиум в рамках разумного</h3>
+        <div class="tag">база: SNOB / Bergs</div>
+        <table>
+          <tr><td>Банкет (10×90€)</td><td style="text-align:right">900 €</td></tr>
+          <tr><td>Напитки (премиум вино/шампанское)</td><td style="text-align:right">430 €</td></tr>
+          <tr><td>Сервис ~10%</td><td style="text-align:right">130 €</td></tr>
+          <tr class="sum"><td>Ресторан</td><td style="text-align:right">~1460 € ✅</td></tr>
+        </table>
+        <div class="sep">Отдельно: торт 150 € · декор 250 € · резерв 200 €<br><b>В лимит 1500 €</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧЕК-ЛИСТ + ТАЙМЛАЙН -->
+  <section id="action">
+    <h2>Что уточнить и когда</h2>
+    <div class="two">
+      <div class="box">
+        <h3>📋 Уточнить письмом (нигде не опубликовано)</h3>
+        <ul>
+          <li>Депозит / minimum spend на субботний вечер</li>
+          <li>Свой свадебный торт + плата за торт (cakeage)</li>
+          <li>Свой алкоголь / шампанское + пробковый сбор (corkage)</li>
+          <li>Самостоятельный декор стола</li>
+          <li>Фикс-цена банкетного меню на группу из 10</li>
+          <li>SNOB — продление работы после 22:00</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>🗓 Таймлайн (де-риск)</h3>
+        <ol class="timeline">
+          <li>Сегодня: отправить запрос (скрипт ниже) одновременно в Kaļķu vārti, Kolonāde, SNOB + резерв Bergs.</li>
+          <li>+3–5 дней: сравнить ответы по 3 критериям — изолир. зал на 10, письменно торт+алкоголь+fee, фикс-цена+депозит.</li>
+          <li>Бронь за 4–6 недель (суббота сентября — сезон). Депозит — только после письменного подтверждения всех условий.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- СКРИПТЫ -->
+  <section id="scripts">
+    <h2>Готовый запрос в ресторан</h2>
+    <p class="lead">Скопируйте и отправьте на e-mail/в мессенджер каждого ресторана.</p>
+    <div class="script">
+      <h3>🇬🇧 English</h3>
+<pre>Subject: Wedding dinner inquiry — 10 guests, Saturday 12 September 2026, 18:00
+
+Hello! We are planning an intimate wedding dinner for 10 guests on Saturday,
+12 September 2026, starting at 18:00. Could you please confirm:
+1. Availability + a PRIVATE separate room / hall for 10 people on that date.
+2. A banquet / group set menu — STARTERS + MAIN COURSE (NOT a tasting menu),
+   price per person.
+3. May we bring our own wedding cake — is there a cakeage fee?
+4. May we bring our own wine / sparkling — what is the corkage fee?
+5. Minimum spend or deposit required for a Saturday evening?
+6. May we decorate the table ourselves (flowers, candles, place cards)?
+7. Until what time can the private dinner run? Parking nearby?
+Thank you very much — we look forward to your offer.
+Kind regards, [Name], [phone / email]</pre>
+    </div>
+    <div class="script">
+      <h3>🇱🇻 Latviešu</h3>
+<pre>Tēma: Kāzu vakariņu pieprasījums — 10 viesi, sestdiena, 2026. g. 12. septembris, 18:00
+
+Labdien! Plānojam nelielas kāzu vakariņas 10 viesiem sestdien, 2026. gada
+12. septembrī, sākot plkst. 18:00. Lūdzu, apstipriniet:
+1. Pieejamību + PRIVĀTU atsevišķu zāli/telpu 10 personām šajā datumā.
+2. Bankета / grupas komplekso ēdienkarti — UZKODAS + PAMATĒDIENS (NE degustācijas),
+   cena par personu.
+3. Vai drīkstam ņemt līdzi savu kāzu torti — vai par to ir maksa (cakeage)?
+4. Vai drīkstam ņemt savu vīnu / dzirkstošo — kāda ir korķa nauda (corkage)?
+5. Vai sestdienas vakaram ir minimālais rēķins vai depozīts?
+6. Vai drīkstam paši dekorēt galdu (ziedi, sveces, vietu kartītes)?
+7. Līdz cikiem var ilgt privātās vakariņas? Vai tuvumā ir stāvvieta?
+Liels paldies! Gaidīsim jūsu piedāvājumu.
+Ar cieņu, [Vārds], [tālrunis / e-pasts]</pre>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <div class="contacts-grid">
+      <div class="ct"><b>Kaļķu vārti 🏆</b>📞 <a href="tel:+37167224576">+371 67224576</a> /
+        <a href="tel:+37122441614">+371 22441614</a><br>✉️ <a href="mailto:catering@kalkuvarti.lv">catering@kalkuvarti.lv</a> · Jauniela 20</div>
+      <div class="ct"><b>Kolonāde. Mūsu stāsti</b>📞 <a href="tel:+37126608882">+371 26608882</a><br>Brīvības laukums 1</div>
+      <div class="ct"><b>SNOB · Grand Poet 5★</b>📞 <a href="tel:+37160008606">+371 60008606</a> ·
+        события <a href="tel:+37126445079">+371 26445079</a><br>✉️ <a href="mailto:snob@semarahhotels.com">snob@semarahhotels.com</a> · Raiņa b. 5/6</div>
+      <div class="ct"><b>Bergs · Hotel Bergs 5★</b>🔗 <a href="https://hotelbergs.lv/" target="_blank" rel="noopener">hotelbergs.lv</a><br>Elizabetes 83/85</div>
+      <div class="ct"><b>Le Dome · Dome Hotel</b>📞 <a href="tel:+37125441551">+371 25441551</a><br>Miesnieku 4</div>
+    </div>
+  </section>
+
+  <!-- ИСТОЧНИКИ -->
+  <section id="sources">
+    <h2>Источники</h2>
+    <div class="src">
+      <a href="https://kalkuvarti.lv/en/" target="_blank" rel="noopener">kalkuvarti.lv — меню, банкетные этажи, контакты</a>
+      <a href="https://meetriga.com/en/7655-kalku-varti" target="_blank" rel="noopener">MeetRiga — Kaļķu vārti (banquet floors)</a>
+      <a href="https://www.meetriga.com/en/7604-kolonade-musu-stasti-kolonade-our-story" target="_blank" rel="noopener">MeetRiga — Kolonāde</a>
+      <a href="https://balticmeetingrooms.com/en/372/restaurant-kolonade-our-stories/restaurant-bar" target="_blank" rel="noopener">BalticMeetingRooms — Kolonāde (small hall + banquet)</a>
+      <a href="https://grandpoet.semarahhotels.com/en/restaurant/snob-restaurant-in-riga/" target="_blank" rel="noopener">Grand Poet — SNOB (Private Dining, banquet)</a>
+      <a href="https://www.tripadvisor.co.uk/Restaurant_Review-g274967-d13582383-Reviews-SNOB_Bar_Restaurant-Riga_Riga_Region.html" target="_blank" rel="noopener">Tripadvisor — SNOB 2026</a>
+      <a href="https://hotelbergs.lv/" target="_blank" rel="noopener">hotelbergs.lv — малый зал + банкетный зал</a>
+      <a href="https://www.domehotel.lv/en/restaurant" target="_blank" rel="noopener">domehotel.lv — Le Dome à la carte</a>
+      <a href="https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/le-dome" target="_blank" rel="noopener">Michelin Guide — Le Dome</a>
+      <a href="https://www.restaurants10.com/LV/Riga/650487205038650/Kolon%C4%81de.-M%C5%ABsu-st%C4%81sti" target="_blank" rel="noopener">Restaurants10 — Kolonāde (2026, часы)</a>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    ⚠️ <b>Важно.</b> Цены — расчётные на базе опубликованных меню (метод: средний чек × 10 + напитки).
+    Точные банкетные цены 2026, corkage, cakeage, депозит и minimum spend публично не опубликованы и
+    подтверждаются прямым письмом. Рейтинги динамичны — перепроверьте в Google Maps перед бронированием.
+  </div>
+
+  <footer>
+    Аналитический свод 4 отчётов + проверка актуальности июнь 2026 · подготовлено для свадьбы Вероники ·
+    Рига, 12.09.2026
+  </footer>
+
+</div>
+</body>
+</html>
