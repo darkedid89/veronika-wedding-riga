@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hercogi · банкет на 15 · Свадьба Игоря и Вероники</title>
+<title>Hercogi · меню €38 на 15 · Свадьба Игоря и Вероники</title>
 <style>
   :root{
     --bg:#fbf7f2; --card:#fff; --ink:#2e2a26; --muted:#6f675f; --line:#e9ddd0;
@@ -45,11 +45,21 @@
   tbody tr:nth-child(even){background:#fdf9f4}
   td.c,th.c{text-align:center}
   .total td{font-weight:700; background:#f3e9dc !important; border-top:2px solid var(--gold)}
+  tr.pick{background:var(--green-soft) !important}
+  tr.pick td:first-child{font-weight:700}
 
   .pill{display:inline-block; background:var(--blush-soft); color:#9a4f4b; border-radius:6px;
     padding:2px 9px; font-size:12px; font-weight:600; margin:2px 4px 2px 0}
   .pill.ok{background:var(--green-soft); color:var(--green)}
   .pill.warn{background:#fbecd6; color:#9a6a1e}
+
+  .menu-card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); margin-bottom:16px}
+  .menu-card h3{margin:0 0 8px; font-size:17px; color:var(--ink)}
+  .menu-card ul{margin:0; padding-left:18px} .menu-card li{margin:5px 0; font-size:14px}
+
+  .rec{background:var(--green-soft); border:1px solid #cfe6d8; border-radius:14px; padding:16px 18px; margin-top:14px}
+  .rec h3{margin:0 0 6px; font-size:17px; color:var(--green)}
+  .rec p{margin:6px 0; font-size:14.5px}
 
   .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
   .box h3{margin:0 0 10px; font-size:18px} .box ul{margin:0; padding-left:18px} .box li{margin:6px 0; font-size:14px}
@@ -68,6 +78,7 @@
     thead th:first-child{background:#f6ece2; z-index:3}
     tbody tr:nth-child(even) td:first-child{background:#fdf9f4}
     .total td:first-child{background:#f3e9dc}
+    tr.pick td:first-child{background:var(--green-soft)}
     .contact a{min-height:24px}
   }
 </style>
@@ -75,15 +86,14 @@
 <body>
 
 <header class="hero">
-  <div class="mono">Кандидат на банкет · 15 гостей</div>
+  <div class="mono">Выбранное меню · 15 гостей</div>
   <h1>Hercogi</h1>
-  <div class="sub">Банкетная площадка · Mārupe (пригород Риги)</div>
+  <div class="sub">Праздничный стол «Svinību galds» · €38 / чел · Mārupe</div>
   <div class="facts">
     <span>👥 15 гостей</span>
-    <span>📅 сб 12.09.2026</span>
-    <span>🍽 банкет «закуски → горячее»</span>
-    <span>🚪 весь 2-й этаж приватно</span>
-    <span>💶 лимит 1500 €</span>
+    <span>🍽 меню €38 (закуски + 3 горячих)</span>
+    <span>🚪 весь 2-й этаж приватно (€150)</span>
+    <span>💶 итого ≈ €1260</span>
   </div>
   <a class="back" href="index.html">← Назад к ТОП-5 ресторанов</a>
 </header>
@@ -91,57 +101,96 @@
 <div class="wrap">
 
   <section id="verdict">
-    <h2>Сколько это стоит на 15 человек</h2>
+    <h2>Итог по выбранному меню</h2>
     <div class="verdict">
-      Только еда на 15 гостей — <b class="big">€450–720</b>. Полный счёт с напитками и сервисом —
-      <b class="big">≈ €950–1400</b>. Даже на 15 человек Hercogi <b>укладывается в лимит 1500 €</b> —
-      заметно дешевле центральных ресторанов Риги (там €53/чел × 15 ≈ €795 только еда).
+      Выбрано меню <b>«Svinību galds» — €38/чел</b> (богатый холодный стол + салаты + 3 горячих на выбор).
+      Полная стоимость на 15 гостей с арендой зала, десертами, напитками и сервисом —
+      <b class="big">≈ €1260</b>. <b>В лимит 1500 €</b>, остаётся запас.
     </div>
-    <p style="margin-top:12px"><span class="pill ok">✅ Приватность подтверждена: под банкет отдаётся весь 2-й этаж (изолированно)</span></p>
+    <p style="margin-top:12px"><span class="pill ok">✅ Приватность: под банкет отдаётся весь 2-й этаж (аренда €150)</span></p>
   </section>
 
-  <section id="menus">
-    <h2>Банкетные меню Hercogi (за человека)</h2>
-    <p class="swipe-hint">← листайте таблицу вбок →</p>
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Меню</th><th class="c">€ / чел</th><th>Что входит</th></tr></thead>
-        <tbody>
-          <tr><td>Холодный стол (закуски, платы, салаты)</td><td class="c">€18 / €22</td><td>минимум 10 гостей</td></tr>
-          <tr style="background:#fdf6e6"><td><b>Банкет с горячим основным</b></td><td class="c"><b>€34 / €38</b></td><td>холодные закуски на стол + порционное горячее ← ваш формат</td></tr>
-          <tr><td>Сет из 3 блюд</td><td class="c">€30 / €40 / €45 / €48</td><td>€48 — с канапе; для частных/корпоративных ужинов</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="calc">
-    <h2>Расчёт на 15 гостей (еда + напитки + сервис)</h2>
-    <p class="swipe-hint">← листайте таблицу вбок →</p>
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Вариант</th><th>Меню €/чел</th><th class="c">Еда ×15</th><th class="c">Напитки*</th><th class="c">Сервис ~10%</th><th class="c">Итого</th></tr></thead>
-        <tbody>
-          <tr><td><b>Эконом</b></td><td>банкет €34</td><td class="c">€510</td><td class="c">~€350</td><td class="c">~€86</td><td class="c"><b>~€950</b> ✅</td></tr>
-          <tr><td><b>Оптимум</b></td><td>сет €40 / банкет €38</td><td class="c">€600</td><td class="c">~€450</td><td class="c">~€105</td><td class="c"><b>~€1155</b> ✅</td></tr>
-          <tr><td><b>Премиум</b></td><td>сет €48 (с канапе)</td><td class="c">€720</td><td class="c">~€550</td><td class="c">~€127</td><td class="c"><b>~€1400</b> ✅</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="lead" style="font-size:13px;margin-top:8px">* Напитки — оценка (вино + welcome-игристое + вода/кофе на 15 чел); точную сумму даст бар-лист ресторана.</p>
-  </section>
-
-  <section id="notes">
-    <h2>Что уточнить и учесть</h2>
-    <div class="box">
-      <h3>⚠️ Уточнить у Hercogi напрямую</h3>
-      <p style="margin:0 0 8px;font-size:14px"><span class="pill ok">✅ Изолированность: под банкет — весь 2-й этаж</span></p>
+  <!-- ЧТО ВХОДИТ -->
+  <section id="included">
+    <h2>Что входит в €38 (на всех)</h2>
+    <p class="lead">Холодный стол и салаты подаются ассорти на стол — выбирать не нужно, включено всё.</p>
+    <div class="menu-card">
+      <h3>❄️ Холодный стол — закуски</h3>
       <ul>
-        <li>Свой алкоголь / пробковый сбор (corkage) — не опубликовано</li>
-        <li>Свой свадебный торт / плата за торт (cakeage) — не опубликовано</li>
-        <li>Депозит / minimum spend на субботу</li>
-        <li>Продление после 21:00–22:00 (публичные часы закрытия)</li>
-        <li><b>Локация:</b> Mārupe — пригород, ~10–15 мин от центра. Другой фон для фото (не Старый город), учтите логистику гостей</li>
+        <li>Тартар из авокадо с песто в корзинке из слоёного теста</li>
+        <li>Малосольный лосось со сливочным сыром и хреном на лепёшке из 5 злаков</li>
+        <li>Филе кильки с травяным кремом и луком на ржаном тосте</li>
+        <li>Ростбиф с чатни из брусники на бисквите с чеддером</li>
+        <li>Курица-гриль с пармезаном, каперсами и соусом «Цезарь» на багете</li>
+        <li><b>Рыбное ассорти:</b> копчёный лосось, икра форели, тигровые креветки, малосольный лосось, кальмары в чили, водоросли</li>
+        <li><b>Мясное ассорти:</b> индейка-гриль, прошутто, чоризо, запечённая свинина, ростбиф, оливки Каламата, маринованные овощи</li>
+      </ul>
+    </div>
+    <div class="menu-card">
+      <h3>🥗 Салаты</h3>
+      <ul>
+        <li>С козьим сыром «Buche» (свёкла, тыквенные семечки, клюква, песто)</li>
+        <li>С филе индейки-гриль (картофель, яблоки, йогуртовая заправка)</li>
+        <li>«Цезарь» (с креветками или курицей)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ВЫБОР ГОРЯЧЕГО -->
+  <section id="mains">
+    <h2>Горячее — выбрать 3 из 5</h2>
+    <p class="lead">Единственное реальное решение по меню. Зелёным отмечена рекомендуемая тройка.</p>
+    <p class="swipe-hint">← листайте таблицу вбок →</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Горячее блюдо</th><th>Кому заходит</th></tr></thead>
+        <tbody>
+          <tr class="pick"><td>Тушёные говяжьи щёчки <span class="pill ok">рекомендуем</span></td><td>праздничное «центральное», нежное, эффектное</td></tr>
+          <tr class="pick"><td>Куриная грудка (соус пармезан) <span class="pill ok">рекомендуем</span></td><td>универсал, безопасно для всех</td></tr>
+          <tr class="pick"><td>Филе чёрного палтуса (рыба) <span class="pill ok">рекомендуем</span></td><td>рыба, легче, элегантно — для разнообразия</td></tr>
+          <tr><td>Жаркое из свинины (грибы, соус бульон)</td><td>сытно, по-домашнему — замена палтусу, если рыбу не любят</td></tr>
+          <tr><td>Клёцки картофель-шпинат (трюфель)</td><td>вегетарианское — если есть вегетарианцы</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rec">
+      <h3>✅ Рекомендация: говяжьи щёчки + куриная грудка + палтус</h3>
+      <p>Классическая тройка <b>«говядина / птица / рыба»</b> — закрывает все вкусы: эффектное мясо для торжества (и Веронике), безопасная курица для тех, кто не экспериментирует (родителям), рыба для разнообразия. Закусочный стол уже очень богатый, поэтому три горячих именно дополняют.</p>
+      <p style="margin-bottom:0"><b>Подстройте под состав:</b> есть вегетарианцы → замените палтус (или курицу) на <b>клёцки</b>; родители не едят рыбу → вместо палтуса возьмите <b>жаркое из свинины</b> (говядина + курица + свинина).</p>
+    </div>
+  </section>
+
+  <!-- СТОИМОСТЬ -->
+  <section id="cost">
+    <h2>Стоимость на 15 гостей</h2>
+    <p class="swipe-hint">← листайте таблицу вбок →</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Позиция</th><th>Расчёт</th><th class="c">Сумма</th></tr></thead>
+        <tbody>
+          <tr><td>Банкет «Svinību galds» €38/чел</td><td>×15</td><td class="c">€570</td></tr>
+          <tr><td>Аренда отдельного зала (весь 2-й этаж)</td><td>фикс</td><td class="c">€150</td></tr>
+          <tr><td>Десерты €6/чел <i>(или свой торт)</i></td><td>×15</td><td class="c">€90</td></tr>
+          <tr><td>Напитки (вино + морс/вода + кофе/чай)</td><td>оценка</td><td class="c">~€350</td></tr>
+          <tr><td>Сервис +10% (на месте)</td><td>~10%</td><td class="c">~€100</td></tr>
+          <tr class="total"><td>ИТОГО</td><td></td><td class="c">≈ €1260 ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="font-size:13px;margin-top:8px">Со своим свадебным тортом вместо десертов меню — минус €90 (уточните плату за торт). Напитки — оценка, точную сумму даст бар-/винная карта.</p>
+  </section>
+
+  <!-- ЧТО УЧЕСТЬ -->
+  <section id="notes">
+    <h2>Что учесть</h2>
+    <div class="box">
+      <p style="margin:0 0 8px;font-size:14px"><span class="pill ok">✅ Изолированность: под банкет — весь 2-й этаж (аренда €150)</span></p>
+      <ul>
+        <li><b>Закончить до 23:00:</b> после 23:00 — +€20/час за обслуживание, и запрещены конфетти/пиротехника. Старт в 18:00 — укладываетесь спокойно.</li>
+        <li>Напитки в меню €38 не входят — вино по карте; уточнить про свой алкоголь / corkage.</li>
+        <li>Свой свадебный торт — уточнить плату за торт (cakeage).</li>
+        <li>Для детей — отдельное детское меню.</li>
+        <li><b>Локация:</b> Mārupe — пригород, ~10–15 мин от центра; учтите логистику и фон для фото (не Старый город).</li>
       </ul>
     </div>
   </section>
@@ -151,15 +200,16 @@
     <div class="contact">
       <b>Restorāns Hercogi</b>
       📞 <a href="tel:+37129106538">+371 29106538</a><br>
+      ✉️ <a href="mailto:marupe@hercogi.lv">marupe@hercogi.lv</a><br>
       📍 Vītiņu iela 4a, Mārupe, LV-2167<br>
-      🕖 Пн–Ср 11:30–21:00 · Чт–Пт 11:30–22:00 · Сб–Вс 12:00–21:00/22:00<br>
-      🔗 <a href="https://hercogi.lv/viesibu-edienkartes/" target="_blank" rel="noopener">hercogi.lv — банкетные меню</a>
+      🔗 <a href="https://hercogi.lv/viesibu-edienkartes/" target="_blank" rel="noopener">hercogi.lv — банкетные меню</a> ·
+      <a href="https://hercogi.lv/wp-content/uploads/2026/02/RU38-EUR-Svinibu-galds.pdf" target="_blank" rel="noopener">PDF меню €38</a>
     </div>
   </section>
 
   <footer>
-    Данные с официального сайта hercogi.lv · цены за еду опубликованы, напитки/депозит/торт/алкоголь — уточняются напрямую ·
-    подготовлено для свадьбы Игоря и Вероники · 12.09.2026
+    Меню «Svinību galds» €38 с официального PDF hercogi.lv (02/2026) · цены за еду и аренду зала опубликованы,
+    напитки/торт/алкоголь — уточняются напрямую · подготовлено для свадьбы Игоря и Вероники · 12.09.2026
   </footer>
 
 </div>
