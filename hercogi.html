@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hercogi · банкет на 15 · Свадьба Игоря и Вероники</title>
+<style>
+  :root{
+    --bg:#fbf7f2; --card:#fff; --ink:#2e2a26; --muted:#6f675f; --line:#e9ddd0;
+    --blush:#c98a86; --blush-soft:#f3e3e1; --gold:#b08a4e; --green:#3f7d5a;
+    --green-soft:#e7f1ea; --shadow:0 6px 24px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.55;
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px; margin:0 auto; padding:0 18px 60px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:600; line-height:1.2}
+  a{color:var(--blush); text-decoration:none} a:hover{text-decoration:underline}
+
+  header.hero{text-align:center; padding:48px 18px 34px;
+    background:linear-gradient(180deg,#fff,var(--blush-soft)); border-bottom:1px solid var(--line)}
+  .hero .mono{letter-spacing:.3em; text-transform:uppercase; font-size:12px; color:var(--gold)}
+  .hero h1{font-size:clamp(28px,6vw,46px); margin:.16em 0 .1em}
+  .hero .sub{color:var(--muted); font-style:italic; font-size:17px}
+  .facts{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:18px}
+  .facts span{background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:6px 14px; font-size:13px; box-shadow:var(--shadow)}
+  .back{display:inline-block; margin-top:16px; font-size:13px; color:var(--blush)}
+
+  section{margin-top:40px}
+  h2{font-size:clamp(21px,3.4vw,28px); margin:0 0 6px; position:relative; padding-left:16px}
+  h2::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px; background:var(--blush); border-radius:4px}
+  .lead{color:var(--muted); margin:0 0 16px}
+
+  .verdict{background:#fff8ef; border:1px solid #f0e0c6; border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
+  .verdict b.big{font-family:Georgia,serif; font-size:22px; color:var(--gold)}
+
+  .scroll{position:relative; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); background:#fff}
+  .swipe-hint{display:none; text-align:center; font-size:12px; color:var(--blush); margin:0 0 6px}
+  table{border-collapse:collapse; width:100%; min-width:520px; font-size:14px}
+  th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line)}
+  thead th{background:#f6ece2; font-family:Georgia,serif; font-weight:600}
+  tbody tr:nth-child(even){background:#fdf9f4}
+  td.c,th.c{text-align:center}
+  .total td{font-weight:700; background:#f3e9dc !important; border-top:2px solid var(--gold)}
+
+  .pill{display:inline-block; background:var(--blush-soft); color:#9a4f4b; border-radius:6px;
+    padding:2px 9px; font-size:12px; font-weight:600; margin:2px 4px 2px 0}
+  .pill.ok{background:var(--green-soft); color:var(--green)}
+  .pill.warn{background:#fbecd6; color:#9a6a1e}
+
+  .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
+  .box h3{margin:0 0 10px; font-size:18px} .box ul{margin:0; padding-left:18px} .box li{margin:6px 0; font-size:14px}
+
+  .contact{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); font-size:14.5px}
+  .contact b{display:block; margin-bottom:6px}
+  .contact a{display:inline-block; padding:3px 2px}
+
+  footer{margin-top:44px; text-align:center; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line); padding-top:18px}
+
+  @media(max-width:700px){
+    .wrap{padding:0 14px 44px} section{margin-top:32px}
+    .swipe-hint{display:block}
+    th,td{padding:9px 10px; font-size:13px}
+    th:first-child,td:first-child{position:sticky; left:0; z-index:2; background:#fff; box-shadow:2px 0 5px rgba(90,70,50,.06)}
+    thead th:first-child{background:#f6ece2; z-index:3}
+    tbody tr:nth-child(even) td:first-child{background:#fdf9f4}
+    .total td:first-child{background:#f3e9dc}
+    .contact a{min-height:24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mono">Кандидат на банкет · 15 гостей</div>
+  <h1>Hercogi</h1>
+  <div class="sub">Банкетная площадка · Mārupe (пригород Риги)</div>
+  <div class="facts">
+    <span>👥 15 гостей</span>
+    <span>📅 сб 12.09.2026</span>
+    <span>🍽 банкет «закуски → горячее»</span>
+    <span>🚪 весь 2-й этаж приватно</span>
+    <span>💶 лимит 1500 €</span>
+  </div>
+  <a class="back" href="index.html">← Назад к ТОП-5 ресторанов</a>
+</header>
+
+<div class="wrap">
+
+  <section id="verdict">
+    <h2>Сколько это стоит на 15 человек</h2>
+    <div class="verdict">
+      Только еда на 15 гостей — <b class="big">€450–720</b>. Полный счёт с напитками и сервисом —
+      <b class="big">≈ €950–1400</b>. Даже на 15 человек Hercogi <b>укладывается в лимит 1500 €</b> —
+      заметно дешевле центральных ресторанов Риги (там €53/чел × 15 ≈ €795 только еда).
+    </div>
+    <p style="margin-top:12px"><span class="pill ok">✅ Приватность подтверждена: под банкет отдаётся весь 2-й этаж (изолированно)</span></p>
+  </section>
+
+  <section id="menus">
+    <h2>Банкетные меню Hercogi (за человека)</h2>
+    <p class="swipe-hint">← листайте таблицу вбок →</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Меню</th><th class="c">€ / чел</th><th>Что входит</th></tr></thead>
+        <tbody>
+          <tr><td>Холодный стол (закуски, платы, салаты)</td><td class="c">€18 / €22</td><td>минимум 10 гостей</td></tr>
+          <tr style="background:#fdf6e6"><td><b>Банкет с горячим основным</b></td><td class="c"><b>€34 / €38</b></td><td>холодные закуски на стол + порционное горячее ← ваш формат</td></tr>
+          <tr><td>Сет из 3 блюд</td><td class="c">€30 / €40 / €45 / €48</td><td>€48 — с канапе; для частных/корпоративных ужинов</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="calc">
+    <h2>Расчёт на 15 гостей (еда + напитки + сервис)</h2>
+    <p class="swipe-hint">← листайте таблицу вбок →</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Вариант</th><th>Меню €/чел</th><th class="c">Еда ×15</th><th class="c">Напитки*</th><th class="c">Сервис ~10%</th><th class="c">Итого</th></tr></thead>
+        <tbody>
+          <tr><td><b>Эконом</b></td><td>банкет €34</td><td class="c">€510</td><td class="c">~€350</td><td class="c">~€86</td><td class="c"><b>~€950</b> ✅</td></tr>
+          <tr><td><b>Оптимум</b></td><td>сет €40 / банкет €38</td><td class="c">€600</td><td class="c">~€450</td><td class="c">~€105</td><td class="c"><b>~€1155</b> ✅</td></tr>
+          <tr><td><b>Премиум</b></td><td>сет €48 (с канапе)</td><td class="c">€720</td><td class="c">~€550</td><td class="c">~€127</td><td class="c"><b>~€1400</b> ✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="font-size:13px;margin-top:8px">* Напитки — оценка (вино + welcome-игристое + вода/кофе на 15 чел); точную сумму даст бар-лист ресторана.</p>
+  </section>
+
+  <section id="notes">
+    <h2>Что уточнить и учесть</h2>
+    <div class="box">
+      <h3>⚠️ Уточнить у Hercogi напрямую</h3>
+      <p style="margin:0 0 8px;font-size:14px"><span class="pill ok">✅ Изолированность: под банкет — весь 2-й этаж</span></p>
+      <ul>
+        <li>Свой алкоголь / пробковый сбор (corkage) — не опубликовано</li>
+        <li>Свой свадебный торт / плата за торт (cakeage) — не опубликовано</li>
+        <li>Депозит / minimum spend на субботу</li>
+        <li>Продление после 21:00–22:00 (публичные часы закрытия)</li>
+        <li><b>Локация:</b> Mārupe — пригород, ~10–15 мин от центра. Другой фон для фото (не Старый город), учтите логистику гостей</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Контакты Hercogi</h2>
+    <div class="contact">
+      <b>Restorāns Hercogi</b>
+      📞 <a href="tel:+37129106538">+371 29106538</a><br>
+      📍 Vītiņu iela 4a, Mārupe, LV-2167<br>
+      🕖 Пн–Ср 11:30–21:00 · Чт–Пт 11:30–22:00 · Сб–Вс 12:00–21:00/22:00<br>
+      🔗 <a href="https://hercogi.lv/viesibu-edienkartes/" target="_blank" rel="noopener">hercogi.lv — банкетные меню</a>
+    </div>
+  </section>
+
+  <footer>
+    Данные с официального сайта hercogi.lv · цены за еду опубликованы, напитки/депозит/торт/алкоголь — уточняются напрямую ·
+    подготовлено для свадьбы Игоря и Вероники · 12.09.2026
+  </footer>
+
+</div>
+</body>
+</html>
