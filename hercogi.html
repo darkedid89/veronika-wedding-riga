@@ -61,6 +61,20 @@
   .rec h3{margin:0 0 6px; font-size:17px; color:var(--green)}
   .rec p{margin:6px 0; font-size:14.5px}
 
+  .picker{background:#fff; border:2px solid var(--gold); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); margin-top:14px}
+  .picker h3{margin:0 0 4px; font-size:18px; color:var(--gold)}
+  .picker .opts{display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; margin:14px 0 4px}
+  .picker label{display:flex; align-items:center; gap:9px; font-size:14px; cursor:pointer;
+    padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--bg)}
+  .picker label:has(input:checked){background:var(--green-soft); border-color:#cfe6d8}
+  .picker input[type=checkbox]{width:18px; height:18px; accent-color:var(--green); flex:none}
+  .result{background:var(--green-soft); border:1px solid #cfe6d8; border-radius:12px; padding:14px 16px; margin-top:10px}
+  .result .rhead{font-weight:700; color:var(--green); margin-bottom:8px; font-family:Georgia,serif; font-size:16px}
+  .result ol{margin:0 0 8px; padding-left:20px} .result li{margin:7px 0; font-size:14.5px}
+  .result .tg{display:inline-block; font-size:11px; background:#fff; border:1px solid #cfe6d8;
+    color:var(--green); border-radius:5px; padding:1px 7px; margin-left:6px; vertical-align:middle}
+  .result .rnote{font-size:13px; color:var(--muted)}
+
   .box{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow)}
   .box h3{margin:0 0 10px; font-size:18px} .box ul{margin:0; padding-left:18px} .box li{margin:6px 0; font-size:14px}
 
@@ -139,7 +153,7 @@
   <!-- ВЫБОР ГОРЯЧЕГО -->
   <section id="mains">
     <h2>Горячее — выбрать 3 из 5</h2>
-    <p class="lead">Единственное реальное решение по меню. Зелёным отмечена рекомендуемая тройка.</p>
+    <p class="lead">Единственное реальное решение по меню. Ниже — авто-подбор: отметьте параметры и получите оптимальные 3 блюда (зелёным в таблице — вариант по умолчанию).</p>
     <p class="swipe-hint">← листайте таблицу вбок →</p>
     <div class="scroll">
       <table>
@@ -153,11 +167,48 @@
         </tbody>
       </table>
     </div>
-    <div class="rec">
-      <h3>✅ Рекомендация: говяжьи щёчки + куриная грудка + палтус</h3>
-      <p>Классическая тройка <b>«говядина / птица / рыба»</b> — закрывает все вкусы: эффектное мясо для торжества (и Веронике), безопасная курица для тех, кто не экспериментирует (родителям), рыба для разнообразия. Закусочный стол уже очень богатый, поэтому три горячих именно дополняют.</p>
-      <p style="margin-bottom:0"><b>Подстройте под состав:</b> есть вегетарианцы → замените палтус (или курицу) на <b>клёцки</b>; родители не едят рыбу → вместо палтуса возьмите <b>жаркое из свинины</b> (говядина + курица + свинина).</p>
+    <div class="picker">
+      <h3>🤖 Авто-подбор горячего</h3>
+      <p style="margin:0;font-size:14px;color:var(--muted)">Отметьте, что важно для вашего стола — алгоритм сам выберет оптимальные 3 блюда из 5.</p>
+      <div class="opts">
+        <label><input type="checkbox" id="opt-veg"> Есть вегетарианцы</label>
+        <label><input type="checkbox" id="opt-nofish"> Гости не едят рыбу</label>
+        <label><input type="checkbox" id="opt-nopork"> Кто-то не ест свинину</label>
+        <label><input type="checkbox" id="opt-premium"> Максимально праздничный стол</label>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
     </div>
+    <script>
+    (function(){
+      var dishes=[
+        {id:'beef',name:'Тушёные говяжьи щёчки',base:9,tag:'мясо',why:'праздничное центральное блюдо, нежное и эффектное'},
+        {id:'chicken',name:'Куриная грудка с соусом пармезан',base:9,tag:'птица',why:'универсал, безопасно для всех гостей'},
+        {id:'fish',name:'Филе чёрного палтуса',base:7,tag:'рыба',why:'легче и элегантно, для разнообразия'},
+        {id:'pork',name:'Жаркое из свинины',base:7,tag:'мясо',why:'сытно и по-домашнему — близко родителям'},
+        {id:'veg',name:'Клёцки картофель-шпинат с трюфелем',base:5,tag:'вег',why:'вегетарианское блюдо'}
+      ];
+      function el(i){return document.getElementById('opt-'+i);}
+      function calc(){
+        var veg=el('veg').checked, nofish=el('nofish').checked, nopork=el('nopork').checked, premium=el('premium').checked;
+        var scored=dishes.map(function(d){
+          var s=d.base;
+          if(d.id==='fish'&&nofish) s-=100;
+          if(d.id==='pork'&&nopork) s-=100;
+          if(d.id==='veg'&&veg) s+=100;
+          if(d.id==='beef'&&premium) s+=2;
+          return {d:d,s:s};
+        }).sort(function(a,b){return b.s-a.s;});
+        var top=scored.slice(0,3).map(function(x){return x.d;});
+        var tags={}; top.forEach(function(d){tags[d.tag]=1;});
+        var html='<div class="rhead">✅ Рекомендуемые 3 горячих:</div><ol>';
+        top.forEach(function(d){html+='<li><b>'+d.name+'</b> — '+d.why+'<span class="tg">'+d.tag+'</span></li>';});
+        html+='</ol><div class="rnote">Покрытие вкусов: '+Object.keys(tags).join(', ')+'. Назовите этот выбор ресторану при бронировании.</div>';
+        document.getElementById('result').innerHTML=html;
+      }
+      ['veg','nofish','nopork','premium'].forEach(function(i){el(i).addEventListener('change',calc);});
+      calc();
+    })();
+    </script>
   </section>
 
   <!-- СТОИМОСТЬ -->
