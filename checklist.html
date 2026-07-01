@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Чеклист подготовки · Свадьба Игоря и Вероники · 12.09.2026</title>
+<style>
+  :root{
+    --bg:#fbf7f2; --card:#ffffff; --ink:#2e2a26; --muted:#6f675f;
+    --line:#e9ddd0; --blush:#c98a86; --blush-soft:#f3e3e1; --gold:#b08a4e;
+    --green:#3f7d5a; --green-soft:#e7f1ea; --red:#b0473f; --red-soft:#f9e6e4;
+    --amber:#9a6a1e; --amber-soft:#fbecd6; --shadow:0 6px 24px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 18px 64px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:600; line-height:1.2}
+  a{color:var(--blush); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header.hero{text-align:center; padding:54px 18px 40px;
+    background:linear-gradient(180deg,#fff 0%,var(--blush-soft) 100%);
+    border-bottom:1px solid var(--line)}
+  .hero .mono{letter-spacing:.32em; text-transform:uppercase; font-size:12px; color:var(--gold)}
+  .hero h1{font-size:clamp(30px,6vw,52px); margin:.18em 0 .12em}
+  .hero .sub{color:var(--muted); font-style:italic; font-size:18px}
+  .facts{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:20px}
+  .facts span{background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:6px 14px; font-size:13px; box-shadow:var(--shadow)}
+
+  /* progress */
+  .progress-card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px 22px; box-shadow:var(--shadow); margin-top:28px}
+  .bar{height:14px; background:var(--blush-soft); border-radius:999px; overflow:hidden; margin-top:10px}
+  .bar i{display:block; height:100%; background:linear-gradient(90deg,var(--blush),var(--gold));
+    border-radius:999px; transition:width .4s}
+  .progress-card b{font-family:Georgia,serif; font-size:20px}
+  .progress-card .num{color:var(--gold)}
+
+  section{margin-top:46px}
+  h2{font-size:clamp(22px,3.6vw,30px); margin:0 0 6px; position:relative; padding-left:16px}
+  h2::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px;
+    background:var(--blush); border-radius:4px}
+  h2.g::before{background:var(--green)} h2.r::before{background:var(--red)} h2.a::before{background:var(--amber)}
+  .lead{color:var(--muted); margin:0 0 18px}
+
+  .pill{display:inline-block; background:var(--blush-soft); color:#9a4f4b;
+    border-radius:6px; padding:2px 9px; font-size:12px; font-weight:600; margin:2px 4px 2px 0}
+  .pill.ok{background:var(--green-soft); color:var(--green)}
+  .pill.warn{background:var(--amber-soft); color:var(--amber)}
+  .pill.crit{background:var(--red-soft); color:var(--red)}
+
+  /* task cards */
+  .cards{display:grid; grid-template-columns:1fr; gap:14px}
+  .task{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; box-shadow:var(--shadow); display:flex; gap:14px; align-items:flex-start}
+  .task.crit{border-left:4px solid var(--red)}
+  .task.warn{border-left:4px solid var(--amber)}
+  .task.ok{border-left:4px solid var(--green)}
+  .task input[type=checkbox]{width:22px; height:22px; margin-top:3px; accent-color:var(--green); cursor:pointer; flex:none}
+  .task .t b{font-size:16px}
+  .task .t p{margin:4px 0 0; font-size:14px; color:var(--muted)}
+  .task.done .t b{text-decoration:line-through; color:var(--muted)}
+  .task .who{margin-left:auto; flex:none; font-size:12px; color:var(--gold); font-weight:600; white-space:nowrap}
+
+  /* done list */
+  .done-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px}
+  .done-item{background:var(--green-soft); border:1px solid #d4e6da; border-radius:12px;
+    padding:12px 14px; font-size:14px}
+  .done-item b{display:block; color:var(--green)}
+  .done-item span{color:var(--muted); font-size:13px}
+
+  /* tables */
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line);
+    border-radius:14px; overflow:hidden; box-shadow:var(--shadow); font-size:14px}
+  th{background:var(--blush-soft); color:#9a4f4b; text-align:left; padding:10px 12px; font-size:13px;
+    letter-spacing:.04em; text-transform:uppercase}
+  td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top}
+  tr.total td{background:var(--amber-soft); font-weight:700}
+  .tbl-wrap{overflow-x:auto; border-radius:14px}
+
+  /* timeline */
+  .tl{list-style:none; margin:0; padding:0; position:relative}
+  .tl::before{content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px; background:var(--line)}
+  .tl li{position:relative; padding:0 0 18px 34px}
+  .tl li::before{content:""; position:absolute; left:2px; top:5px; width:16px; height:16px;
+    border-radius:50%; background:#fff; border:3px solid var(--blush)}
+  .tl li.g::before{border-color:var(--green)} .tl li.r::before{border-color:var(--red)} .tl li.a::before{border-color:var(--amber)}
+  .tl .d{font-weight:700; color:var(--gold); font-size:13px; letter-spacing:.06em}
+  .tl p{margin:2px 0 0; font-size:14px; color:var(--ink)}
+
+  footer{margin-top:56px; text-align:center; color:var(--muted); font-size:13px; font-style:italic}
+  @media (max-width:640px){ .task .who{display:none} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mono">План подготовки · Чеклист</div>
+  <h1>Игорь &amp; Вероника</h1>
+  <div class="sub">Суббота, 12 сентября 2026 · ЗАГС 13:00, центр Риги · Hercogs, Mārupe 17:00</div>
+  <div class="facts">
+    <span>💍 ЗАГС 13:00 · забронирован</span>
+    <span>🍽 Hercogs · меню €38 согласовано</span>
+    <span>🛥 Кораблик по каналу — забронировать</span>
+    <span>👥 ~15 гостей · 50/50</span>
+    <span>✈️ Отпуск 13.07 – 05.08</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="progress-card">
+    <b>Готовность: <span class="num" id="pnum">0%</span></b>
+    <span style="color:var(--muted); font-size:14px" id="pcount"></span>
+    <div class="bar"><i id="pbar" style="width:0%"></i></div>
+  </div>
+
+  <!-- ================= СДЕЛАНО ================= -->
+  <section>
+    <h2 class="g">✅ Уже сделано</h2>
+    <p class="lead">Закрытые пункты — можно не думать о них.</p>
+    <div class="done-grid">
+      <div class="done-item"><b>Ресторан Hercogs (Mārupe)</b><span>Снят, зал хороший, музыка можно, можно дольше 23:00. Официант €120, вода/чай/кофе €6 с чел.</span></div>
+      <div class="done-item"><b>Банкетное меню €38</b><span>Финально согласовано с рестораном</span></div>
+      <div class="done-item"><b>Регистрация брака</b><span>Забронирована</span></div>
+      <div class="done-item"><b>Торт</b><span>Заказан у кондитера</span></div>
+      <div class="done-item"><b>Кольца juvex — оплачены</b><span>€1950, натуральные бриллианты, в производстве, будут в срок</span></div>
+      <div class="done-item"><b>Фотограф</b><span>Есть</span></div>
+      <div class="done-item"><b>Макияж и укладка</b><span>Забронировано</span></div>
+      <div class="done-item"><b>Букет невесты</b><span>Заказан</span></div>
+      <div class="done-item"><b>Наряд невесты</b><span>Швея найдена, туфли куплены</span></div>
+      <div class="done-item"><b>Декор стола</b><span>Вероника берёт на себя</span></div>
+    </div>
+  </section>
+
+  <!-- ================= КРИТИЧНО ================= -->
+  <section>
+    <h2 class="r">🔴 Критично — до вылета 13 июля</h2>
+    <p class="lead">Отпуск 13.07–05.08 съедает месяц. Эти пункты нельзя отложить «на после».</p>
+    <div class="cards">
+      <label class="task crit"><input type="checkbox" data-k="suit">
+        <div class="t"><b>Костюм Игоря: заказать брюки и рубашку под заказ</b>
+        <p>Пошив под заказ занимает 2–4 недели. Заказать <u>до отлёта</u>, чтобы шили во время отпуска — примерка и забор после 05.08. Иначе останется всего 5 недель.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task crit"><input type="checkbox" data-k="deposit">
+        <div class="t"><b>Депозит Hercogs — €300 наличкой</b>
+        <p>Вероника завозит в субботу 04.07. Деньги отправлены на совместный счёт, снять с Revolut. Взять расписку/подтверждение.</p></div>
+        <span class="who">Вероника</span></label>
+
+      <label class="task crit"><input type="checkbox" data-k="hotel">
+        <div class="t"><b>Забронировать отель — 2 номера</b>
+        <p>Отель выбран, брони нет. Номер 1: Татьяна + Юрий (родители Игоря). Номер 2: Олег (+ Барбара). Ночь 12–13.09, бронировать с бесплатной отменой — статус Барбары ещё под вопросом.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task crit"><input type="checkbox" data-k="corkage">
+        <div class="t"><b>Уточнить у Hercogs бутылочный сбор и правила своего алкоголя</b>
+        <p>Договорённость «сами купим и завезём» есть, но точная цена сбора за бутылку не зафиксирована. Спросить: сумма сбора, когда завозить, охлаждение игристого.</p></div>
+        <span class="who">Вероника</span></label>
+
+      <label class="task crit"><input type="checkbox" data-k="time17">
+        <div class="t"><b>Согласовать с Hercogs начало в 17:00 вместо 18:00</b>
+        <p>ЗАГС в 13:00 + фото + кораблик заканчиваются к ~16:15. Ужин в 17:00 убирает мёртвую паузу и даёт 6 часов вечера до 23:00. Один звонок.</p></div>
+        <span class="who">Вероника</span></label>
+
+      <label class="task crit"><input type="checkbox" data-k="boat">
+        <div class="t"><b>Забронировать кораблик по Рижскому каналу — частная аренда ~1 час</b>
+        <p>Пристань у Бастионной горки — 5–10 мин пешком от центра/ЗАГСа. Частная аренда на компанию: <a href="https://rivercruises.lv/en/" target="_blank">River Cruises Latvia</a> (Amber Rīga, Annabella и др.) или <a href="https://rigabycanal.lv/en/" target="_blank">Riga By Canal</a>; ориентир €150–350/час (борт «Galaxy» на getmyboat ~€170/час на 40 чел). Сентябрьские субботы разбирают — бронировать до отлёта. Спросить: можно ли своё шампанское на борт, пледы, навес от дождя.</p></div>
+        <span class="who">Игорь</span></label>
+    </div>
+  </section>
+
+  <!-- ================= ДЕНЬ СВАДЬБЫ ================= -->
+  <section>
+    <h2>🛥 День свадьбы — таймлайн 12.09</h2>
+    <p class="lead">Логика: всё до ужина происходит в одном пятачке центра (ЗАГС → фото → пристань пешком), потом один-единственный переезд в Mārupe.</p>
+    <ul class="tl">
+      <li><span class="d">10:00 – 12:00</span><p>Макияж и укладка Вероники · доставка букета · Игорь забирает кольца-документы</p></li>
+      <li><span class="d">12:30</span><p>Сбор гостей у ЗАГСа</p></li>
+      <li class="g"><span class="d">13:00 – 13:45</span><p>💍 Церемония + поздравления у ЗАГСа</p></li>
+      <li><span class="d">14:00 – 15:00</span><p>📸 Фотосессия: Старый город + Бастионная горка у канала (заканчиваем прямо у пристани). План Б при дожде — фото под арками Старого города, зонты</p></li>
+      <li class="a"><span class="d">15:15 – 16:15</span><p>🛥 Кораблик по каналу и Даугаве — все гости, шампанское на борту, фотограф снимает</p></li>
+      <li><span class="d">16:15 – 16:50</span><p>🚕 Переезд в Mārupe (~20–25 мин): Bolt + машины непьющих гостей</p></li>
+      <li class="g"><span class="d">17:00 – 23:00+</span><p>🍽 Ужин в Hercogs: тосты, торт, первый танец, танцы</p></li>
+      <li><span class="d">23:00+</span><p>🚕 Bolt по домам (предзаказы)</p></li>
+    </ul>
+  </section>
+
+  <!-- ================= ВАЖНО ================= -->
+  <section>
+    <h2 class="a">🟡 Важно — июль-август</h2>
+    <div class="cards">
+      <label class="task warn"><input type="checkbox" data-k="rsvp">
+        <div class="t"><b>Подтвердить гостей «под вопросом» — дедлайн ~29 июля</b>
+        <p>Аркадий + жена · Олег + Барбара · тётя Ира с мужем (Вероника хотела позвать — позвала ли?). Срок «за 1.5 месяца» выпадает на отпуск — подтверждать удалённо.</p></div>
+        <span class="who">Оба</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="fitting">
+        <div class="t"><b>Примерка колец у juvex — 6 августа</b>
+        <p>С ювелиром на связи, успеваем: примерка 06.08, готовые кольца забрать до 11.09. Написать juvex сразу после прилёта 05.08.</p></div>
+        <span class="who">Оба</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="invites">
+        <div class="t"><b>Пригласительные: доделать и раздать</b>
+        <p>Делаются. Раздать до отлёта или сразу после 05.08, чтобы у гостей была дата на руках.</p></div>
+        <span class="who">Оба</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="alcohol">
+        <div class="t"><b>Купить алкоголь и завезти в Hercogs</b>
+        <p>Расчёт в таблице ниже (~17 бутылок, ~€250–350). Купить в 20-х числах августа, завезти заранее. Кола/соки — заказать в ресторане.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="music">
+        <div class="t"><b>Музыка: колонки + плейлист</b>
+        <p>Подтвердить у папы Вероники колонки (подключаются к телеку) и что они подходят к ТВ/системе в зале Hercogs — проверить разъёмы на месте. Собрать плейлист: встреча гостей, ужин, первый танец, танцы.</p></div>
+        <span class="who">Оба</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="seating">
+        <div class="t"><b>План рассадки</b>
+        <p>Игорь уже делает план. Финализировать после подтверждения всех «под вопросом» (после 29.07).</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="photographer-hours">
+        <div class="t"><b>Фотограф: подтвердить часы и маршрут дня</b>
+        <p>Нужно покрытие ~13:00–19:00 (ЗАГС → фото → кораблик → встреча в ресторане, торт/первый танец?). Уточнить сколько часов в договоре и доплату за лишние.</p></div>
+        <span class="who">Вероника</span></label>
+
+      <label class="task warn"><input type="checkbox" data-k="witnesses">
+        <div class="t"><b>Свидетели и роли на день</b>
+        <p>Два свидетеля 18+ для ЗАГСа — назначить. Плюс «координатор дня» из гостей (Дима/Айгар?): рассаживает по такси, отвечает на звонки вендоров, держит тайминг — чтобы вы двое ничем не занимались.</p></div>
+        <span class="who">Оба</span></label>
+    </div>
+  </section>
+
+  <!-- ================= ФИНАЛ ================= -->
+  <section>
+    <h2>🗓 Финальная неделя — сентябрь</h2>
+    <div class="cards">
+      <label class="task"><input type="checkbox" data-k="bolt">
+        <div class="t"><b>Предзаказы Bolt — 10 сентября (за 2 дня)</b>
+        <p>Теперь <b>два</b> блока: (1) ~16:15 центр → Hercogs Mārupe для гостей без машин; (2) ~23:00 из ресторана по домам — 4 машины (см. таблицу). Детское кресло для Томасса и ребёнка Юли. Часть гостей может поехать на своих машинах — выяснить кто за рулём.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task"><input type="checkbox" data-k="boat-kit">
+        <div class="t"><b>Набор на кораблик: шампанское + бокалы</b>
+        <p>2 бутылки игристого из общего запаса, бокалы (пластик/стекло — спросить у оператора кораблика), салфетки. Ответственный из гостей привозит на пристань.</p></div>
+        <span class="who">Оба</span></label>
+
+      <label class="task"><input type="checkbox" data-k="docs">
+        <div class="t"><b>Документы и кольца в день Х</b>
+        <p>Паспорта, квитанция ЗАГСа, кольца — назначить кто держит (свидетель). Наличка для ресторана — отдельный конверт.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task"><input type="checkbox" data-k="rings-pickup">
+        <div class="t"><b>Забрать готовые кольца — до 11 сентября</b>
+        <p>juvex подтвердил готовность в срок.</p></div>
+        <span class="who">Игорь</span></label>
+
+      <label class="task"><input type="checkbox" data-k="cake-delivery">
+        <div class="t"><b>Доставка торта в Hercogs 12.09</b>
+        <p>Уточнить у кондитера: привозят они или забираем сами, ко скольки, есть ли у ресторана холодильник.</p></div>
+        <span class="who">Вероника</span></label>
+
+      <label class="task"><input type="checkbox" data-k="cash">
+        <div class="t"><b>Снять наличку для расчёта с рестораном</b>
+        <p>Hercogs хочет оплату наличными (~€1000 по оценке + официант €120 + напитки €6×15). Снять заранее, не в день свадьбы.</p></div>
+        <span class="who">Игорь</span></label>
+    </div>
+  </section>
+
+  <!-- ================= АЛКОГОЛЬ ================= -->
+  <section>
+    <h2 class="a">🥂 Расчёт алкоголя</h2>
+    <p class="lead">15 взрослых (50/50 м/ж), банкет 18:00–23:00+ (5–6 часов). Дети — Томасс и ребёнок Юли — не в счёте. Свой алкоголь + бутылочный сбор Hercogs.</p>
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>Напиток</th><th>Норма</th><th>Расчёт</th><th>Итого купить</th></tr>
+      <tr><td><b>Игристое / шампанское</b></td><td>2 бокала на гостя (встреча + тосты)</td><td>15 × 2 = 30 бокалов ÷ 6 = 5 бут.</td><td><b>6 бут. 0.75 л</b> (1 запас, охладить!)</td></tr>
+      <tr><td><b>Вино белое</b></td><td rowspan="2">0.5–0.6 бутылки на гостя суммарно</td><td rowspan="2">15 × 0.55 ≈ 8 бут., поровну</td><td><b>4 бут. 0.75 л</b></td></tr>
+      <tr><td><b>Вино красное</b></td><td><b>4 бут. 0.75 л</b></td></tr>
+      <tr><td><b>Крепкое (виски / водка / коньяк)</b></td><td>150–200 мл на пьющего мужчину</td><td>7 муж. × 180 мл ≈ 1.3 л</td><td><b>3 бут. 0.7 л</b> (например 2 виски + 1 водка)</td></tr>
+      <tr><td><b>Кола, соки, вода</b></td><td colspan="2">Заказываем в ресторане · вода/чай/кофе уже входят (€6/чел)</td><td>—</td></tr>
+      <tr class="total"><td>Итого</td><td colspan="2">~17 бутылок · ориентировочно €250–350 в Latvijas balzams / алкомаркете</td><td>17 бут.</td></tr>
+    </table>
+    </div>
+    <p style="font-size:13px; color:var(--muted); margin-top:10px">💡 Совет: брать с чеком и возможностью возврата нераспечатанных бутылок — тогда запас ничего не стоит. Если тётя Ира с мужем подтвердятся (17 взрослых) — +1 игристое, +1 вино.</p>
+  </section>
+
+  <!-- ================= ГОСТИ ================= -->
+  <section>
+    <h2>👥 Гости и логистика</h2>
+    <p class="lead">15–17 взрослых + 2 ребёнка. Bolt предзаказ за 2 дня (10.09).</p>
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>Гости</th><th>Статус</th><th>Ночёвка</th><th>Транспорт после</th></tr>
+      <tr><td>Юля (сестра) + Дима + ребёнок</td><td><span class="pill ok">Подтверждены</span></td><td>Не нужна</td><td>🚕 Bolt до Слоки</td></tr>
+      <tr><td>Татьяна + Юрий (родители Игоря)</td><td><span class="pill ok">Подтверждены</span></td><td>🏨 Номер 1 — <b>забронировать!</b></td><td>До отеля</td></tr>
+      <tr><td>Олег (брат) + Барбара</td><td><span class="pill warn">Барбара под вопросом · до 29.07</span></td><td>🏨 Номер 2 — <b>забронировать!</b></td><td>До отеля</td></tr>
+      <tr><td>Мама Вероники + Михаил + Зинаида</td><td><span class="pill ok">Подтверждены</span></td><td>Не нужна</td><td>🚕 Bolt до Irlavas 12</td></tr>
+      <tr><td>Аркадий + жена</td><td><span class="pill warn">Под вопросом · до 29.07</span></td><td>Не нужна</td><td>🚕 Bolt до Слоки</td></tr>
+      <tr><td>Ира (сестра Вероники) + Айгар + Томасс</td><td><span class="pill ok">Подтверждены</span></td><td>Не нужна</td><td>🚕 Bolt до дома (детское кресло?)</td></tr>
+      <tr><td>Тётя Ира + муж</td><td><span class="pill crit">Уточнить — приглашены ли</span></td><td>?</td><td>?</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <!-- ================= ТАЙМЛАЙН ================= -->
+  <section>
+    <h2>📅 Дедлайны</h2>
+    <ul class="tl">
+      <li class="r"><span class="d">СБ 04.07</span><p>Депозит €300 наличкой в Hercogs — Вероника</p></li>
+      <li class="r"><span class="d">До 12.07</span><p>Заказать брюки + рубашку под заказ · забронировать отель (2 номера) · забронировать кораблик · согласовать 17:00 с Hercogs · уточнить бутылочный сбор · раздать готовые пригласительные</p></li>
+      <li><span class="d">13.07 – 05.08</span><p>✈️ Отпуск. Удалённо: подтверждение гостей «под вопросом» (дедлайн 29.07)</p></li>
+      <li class="a"><span class="d">06.08</span><p>Примерка колец у juvex</p></li>
+      <li class="a"><span class="d">До 20.08</span><p>Купить туфли Игорю · забрать костюм · финализировать рассадку · собрать плейлист, проверить колонки</p></li>
+      <li class="a"><span class="d">До 01.09</span><p>Купить алкоголь (~17 бут.) и договориться о завозе в ресторан</p></li>
+      <li class="g"><span class="d">10.09</span><p>Предзаказы Bolt (центр→Mārupe ~16:15 + развоз ~23:00) · снять наличку для ресторана</p></li>
+      <li class="g"><span class="d">11.09</span><p>Забрать кольца · подтвердить доставку торта · подтвердить кораблик и фотографа</p></li>
+      <li class="g"><span class="d">СБ 12.09</span><p>💒 Свадьба! ЗАГС 13:00 → фото → кораблик → Hercogs 17:00</p></li>
+    </ul>
+  </section>
+
+  <footer>Чеклист обновлён 02.07.2026 · отметки сохраняются в браузере</footer>
+</div>
+
+<script>
+  const KEY='wedding-checklist-v1';
+  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+  const boxes=[...document.querySelectorAll('.task input[type=checkbox]')];
+  function refresh(){
+    const done=boxes.filter(b=>b.checked).length;
+    const pct=Math.round(done/boxes.length*100);
+    document.getElementById('pnum').textContent=pct+'%';
+    document.getElementById('pbar').style.width=pct+'%';
+    document.getElementById('pcount').textContent=' · '+done+' из '+boxes.length+' открытых задач закрыто (+10 уже сделано ранее)';
+    boxes.forEach(b=>b.closest('.task').classList.toggle('done',b.checked));
+  }
+  boxes.forEach(b=>{
+    b.checked=!!saved[b.dataset.k];
+    b.addEventListener('change',()=>{
+      saved[b.dataset.k]=b.checked;
+      localStorage.setItem(KEY,JSON.stringify(saved));
+      refresh();
+    });
+  });
+  refresh();
+</script>
+</body>
+</html>
