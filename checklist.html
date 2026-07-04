@@ -433,30 +433,55 @@
     </ul>
   </section>
 
-  <footer>Чеклист обновлён 02.07.2026 · отметки сохраняются в браузере</footer>
+  <footer>Чеклист обновлён 04.07.2026 · ✅ отметки общие — синхронизируются у всех, кто открыл страницу</footer>
 </div>
 
 <script>
   const KEY='wedding-checklist-v1';
-  const saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+  const SYNC='https://jsonblob.com/api/jsonBlob/019f2c6c-9f42-7b13-b118-9d9428c903ba';
+  let saved=JSON.parse(localStorage.getItem(KEY)||'{}');
   const boxes=[...document.querySelectorAll('.task input[type=checkbox]')];
   function refresh(){
     const done=boxes.filter(b=>b.checked).length;
     const pct=Math.round(done/boxes.length*100);
     document.getElementById('pnum').textContent=pct+'%';
     document.getElementById('pbar').style.width=pct+'%';
-    document.getElementById('pcount').textContent=' · '+done+' из '+boxes.length+' открытых задач закрыто (+10 уже сделано ранее)';
+    document.getElementById('pcount').textContent=' · '+done+' из '+boxes.length+' открытых задач закрыто (+12 уже сделано ранее)';
     boxes.forEach(b=>b.closest('.task').classList.toggle('done',b.checked));
   }
+  function apply(){ boxes.forEach(b=>{ b.checked=!!saved[b.dataset.k]; }); refresh(); }
+  let pushTimer=null;
+  function push(){
+    clearTimeout(pushTimer);
+    pushTimer=setTimeout(()=>{
+      fetch(SYNC,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(saved)}).catch(()=>{});
+    },400);
+  }
+  async function pull(){
+    try{
+      const r=await fetch(SYNC,{cache:'no-store'});
+      if(r.ok){
+        const remote=await r.json();
+        if(remote&&typeof remote==='object'){
+          saved=remote;
+          localStorage.setItem(KEY,JSON.stringify(saved));
+          apply();
+        }
+      }
+    }catch(e){/* оффлайн — работаем на localStorage */}
+  }
   boxes.forEach(b=>{
-    b.checked=!!saved[b.dataset.k];
     b.addEventListener('change',()=>{
       saved[b.dataset.k]=b.checked;
       localStorage.setItem(KEY,JSON.stringify(saved));
       refresh();
+      push();
     });
   });
-  refresh();
+  apply();
+  pull();
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) pull(); });
+  setInterval(pull,60000);
 </script>
 </body>
 </html>
