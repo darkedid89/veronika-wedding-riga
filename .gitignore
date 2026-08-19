@@ -1,2 +1,10 @@
 *.md
 ChatExport*
+messages.html
+css/
+js/
+images/
+photos/
+stickers/
+files/
+*.m4a
