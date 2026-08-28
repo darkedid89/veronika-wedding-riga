@@ -107,7 +107,7 @@
     <span>🛥 Кораблик Elizabete 16:00–18:00 · забронирован</span>
     <span>🍽 Hercogs · сообщить 18:30 и 17 порций</span>
     <span>👥 Ужин 17 · кораблик ~26</span>
-    <span>⏳ До свадьбы 24 дня</span>
+    <span>⏳ До свадьбы 16 дней</span>
   </div>
 </header>
 
@@ -132,6 +132,9 @@
       <div class="done-item"><b>Кораблик Elizabete</b><span>16:00–18:00, аванс €88 оплачен</span></div>
       <div class="done-item"><b>Все гости подтвердились</b><span>18 чел + фотограф · Барбара, Аркадий+Ирина, тётя Ира+Артур — да</span></div>
       <div class="done-item"><b>Пригласительные</b><span>Напечатаны (€20): 7 «с ужином» + 6 «с корабликом»</span></div>
+      <div class="done-item"><b>Кольца готовы и забраны</b><span>juvex · примерка 06.08 прошла, срок подтверждён · забрано 27.08</span></div>
+      <div class="done-item"><b>Брюки к костюму</b><span>Костюм куплен 19.08, брюки забраны 27.08</span></div>
+      <div class="done-item"><b>Фата</b><span>Куплена 27.08</span></div>
       <div class="done-item"><b>Коробочка для колец</b><span>Заказана · €13.78</span></div>
       <div class="done-item"><b>Маникюр 11.09</b><span>Игорь 12:30 · Вероника 13:30</span></div>
       <div class="done-item"><b>Слова благодарности</b><span>Написаны каждому гостю (для карточек)</span></div>
@@ -188,11 +191,6 @@
   <section>
     <h2 class="a">🟡 Важно — до конца августа</h2>
     <div class="cards">
-      <label class="task warn"><input type="checkbox" data-k="fitting">
-        <div class="t"><b>Кольца: подтвердить готовность после примерки</b>
-        <p>Примерка была 06.08 — если всё ок, зафиксировать с juvex дату получения (кольца нужны к 11.09). Если были правки — контролировать срок.</p></div>
-        <span class="who">Игорь</span></label>
-
       <label class="task warn"><input type="checkbox" data-k="alcohol">
         <div class="t"><b>Купить алкоголь: ужин + кораблик, завезти заранее</b>
         <p>Расчёт в таблице ниже — теперь два блока: ужин в Hercogs (~20 бут. алкоголя + кола 3×1,5 л и сок 4×1 л; 7 пьющих мужчин — без Олега) и игристое+сок+вода на кораблик. Купить до 01.09, ужинную часть завезти в ресторан, корабликовую охладить к 12.09.</p></div>
@@ -221,16 +219,6 @@
       <label class="task warn"><input type="checkbox" data-k="glasses">
         <div class="t"><b>Свадебные бокалы для шампанского</b>
         <p>Пара красивых бокалов для молодожёнов — на первый тост и фото (и на first look у ЗАГСа можно). После свадьбы остаются на память.</p></div>
-        <span class="who">Вероника</span></label>
-
-      <label class="task warn"><input type="checkbox" data-k="trousers">
-        <div class="t"><b>Забрать брюки к костюму</b>
-        <p>Костюм куплен (19.08) — остались только брюки. Забрать и примерить заранее, чтобы было время на подгонку.</p></div>
-        <span class="who">Игорь</span></label>
-
-      <label class="task warn"><input type="checkbox" data-k="veil">
-        <div class="t"><b>Купить фату</b>
-        <p>Добавлено 19.08 по просьбе Игоря. К свадебному образу — успеть до 12.09.</p></div>
         <span class="who">Вероника</span></label>
 
       <label class="task warn"><input type="checkbox" data-k="mua">
@@ -298,11 +286,6 @@
       <label class="task"><input type="checkbox" data-k="docs">
         <div class="t"><b>Документы и кольца в день Х</b>
         <p>Паспорта, квитанция ЗАГСа, кольца — назначить кто держит (координатор). Наличка для ресторана — отдельный конверт.</p></div>
-        <span class="who">Игорь</span></label>
-
-      <label class="task"><input type="checkbox" data-k="rings-pickup">
-        <div class="t"><b>Забрать готовые кольца — до 11 сентября</b>
-        <p>juvex подтвердил готовность в срок.</p></div>
         <span class="who">Игорь</span></label>
 
       <label class="task"><input type="checkbox" data-k="cake-delivery">
@@ -418,15 +401,36 @@
     </ul>
   </section>
 
-  <footer>Чеклист обновлён 19.08.2026 · до свадьбы 24 дня · ✅ отметки общие — синхронизируются у всех, кто открыл страницу</footer>
+  <footer>Чеклист обновлён 27.08.2026 · до свадьбы 16 дней · ✅ отметки общие — синхронизируются у всех, кто открыл страницу</footer>
 </div>
 
 <script>
   const KEY='wedding-checklist-v1';
-  const SYNC='https://kvdb.io/HUQmSxcZwvU74LGX73heBL/state';
-  let saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+  const TSKEY='wedding-checklist-v1-ts';
+  const API='https://keyvalue.immanuel.co/api/KeyVal';
+  const APP='6unxaiks', SLOT='chk';
   const boxes=[...document.querySelectorAll('.task input[type=checkbox]')];
+  const validKeys=new Set(boxes.map(b=>b.dataset.k));
   const doneBase=document.querySelectorAll('.done-item').length;
+
+  // читаем локальные отметки и выбрасываем ключи задач, которых больше нет
+  function loadLocal(){
+    let raw={};
+    try{ raw=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){}
+    const clean={};
+    Object.keys(raw).forEach(k=>{ if(raw[k]&&validKeys.has(k)) clean[k]=true; });
+    return clean;
+  }
+  function keysOf(o){ return Object.keys(o).filter(k=>o[k]); }
+  function parseKeys(str){
+    const o={};
+    (str||'').split(',').forEach(k=>{ k=k.trim(); if(k&&validKeys.has(k)) o[k]=true; });
+    return o;
+  }
+  let saved=loadLocal();
+  let savedTs=+(localStorage.getItem(TSKEY)||0);
+  function saveLocal(){ localStorage.setItem(KEY,JSON.stringify(saved)); localStorage.setItem(TSKEY,savedTs); }
+  saveLocal();
   function refresh(){
     const done=boxes.filter(b=>b.checked).length;
     const total=doneBase+boxes.length;
@@ -441,26 +445,32 @@
   function push(){
     clearTimeout(pushTimer);
     pushTimer=setTimeout(()=>{
-      fetch(SYNC,{method:'PUT',body:JSON.stringify(saved)}).catch(()=>{});
-    },400);
+      savedTs=Date.now();
+      saveLocal();
+      const payload=savedTs+'|'+keysOf(saved).join(',');
+      fetch(API+'/UpdateValue/'+APP+'/'+SLOT+'/'+encodeURIComponent(payload),{method:'POST'}).catch(()=>{});
+    },500);
   }
   async function pull(){
     try{
-      const r=await fetch(SYNC,{cache:'no-store'});
-      if(r.ok){
-        const remote=await r.json();
-        if(remote&&typeof remote==='object'){
-          saved=remote;
-          localStorage.setItem(KEY,JSON.stringify(saved));
-          apply();
-        }
-      }
+      const r=await fetch(API+'/GetValue/'+APP+'/'+SLOT,{cache:'no-store'});
+      if(!r.ok) return;
+      let txt=(await r.text()).trim();
+      if(txt.charAt(0)==='"'){ try{ txt=JSON.parse(txt); }catch(e){} }
+      const sep=txt.indexOf('|');
+      if(sep<0) return;
+      const ts=+txt.slice(0,sep);
+      // побеждает более свежая запись: свои изменения не затираем
+      if(!ts||ts<=savedTs) return;
+      saved=parseKeys(txt.slice(sep+1));
+      savedTs=ts;
+      saveLocal();
+      apply();
     }catch(e){/* оффлайн — работаем на localStorage */}
   }
   boxes.forEach(b=>{
     b.addEventListener('change',()=>{
-      saved[b.dataset.k]=b.checked;
-      localStorage.setItem(KEY,JSON.stringify(saved));
+      if(b.checked) saved[b.dataset.k]=true; else delete saved[b.dataset.k];
       refresh();
       push();
     });
