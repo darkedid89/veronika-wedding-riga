@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Напитки · Свадьба Игоря и Вероники · 12.09.2026</title>
+<style>
+  :root{
+    --bg:#fbf7f2; --card:#ffffff; --ink:#2e2a26; --muted:#6f675f;
+    --line:#e9ddd0; --blush:#c98a86; --blush-soft:#f3e3e1; --gold:#b08a4e;
+    --green:#3f7d5a; --green-soft:#e7f1ea; --red:#b0473f; --red-soft:#f9e6e4;
+    --amber:#9a6a1e; --amber-soft:#fbecd6; --shadow:0 6px 24px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 18px 64px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:600; line-height:1.2}
+  a{color:var(--blush); text-decoration:none} a:hover{text-decoration:underline}
+  header.hero{text-align:center; padding:48px 18px 36px;
+    background:linear-gradient(180deg,#fff 0%,var(--blush-soft) 100%); border-bottom:1px solid var(--line)}
+  .hero .mono{letter-spacing:.32em; text-transform:uppercase; font-size:12px; color:var(--gold)}
+  .hero h1{font-size:clamp(28px,5vw,44px); margin:.18em 0 .12em}
+  .hero .sub{color:var(--muted); font-style:italic; font-size:17px}
+  .facts{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:18px}
+  .facts span{background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; box-shadow:var(--shadow)}
+  section{margin-top:44px}
+  h2{font-size:clamp(22px,3.6vw,30px); margin:0 0 6px; position:relative; padding-left:16px}
+  h2::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px; background:var(--blush); border-radius:4px}
+  h2.g::before{background:var(--green)} h2.a::before{background:var(--amber)}
+  .lead{color:var(--muted); margin:0 0 18px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow)}
+  .card h3{margin:0 0 2px; font-size:17px}
+  .card .meta{font-size:12px; color:var(--gold); font-weight:600; letter-spacing:.04em; text-transform:uppercase}
+  .card p{margin:8px 0 0; font-size:14px; color:var(--ink)}
+  .card .why{margin-top:8px; font-size:13px; color:var(--muted); border-top:1px dashed var(--line); padding-top:8px}
+  .qty{float:right; background:var(--amber-soft); color:var(--amber); border-radius:8px; padding:2px 10px; font-weight:700; font-size:14px; margin-left:8px}
+  .pill{display:inline-block; background:var(--blush-soft); color:#9a4f4b; border-radius:6px; padding:1px 8px; font-size:11px; font-weight:600; margin:0 4px 0 0; vertical-align:middle}
+  .pill.ok{background:var(--green-soft); color:var(--green)} .pill.warn{background:var(--amber-soft); color:var(--amber)}
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); font-size:14px}
+  th{background:var(--blush-soft); color:#9a4f4b; text-align:left; padding:10px 12px; font-size:13px; letter-spacing:.04em; text-transform:uppercase}
+  td{padding:10px 12px; border-top:1px solid var(--line); vertical-align:top}
+  tr.total td{background:var(--amber-soft); font-weight:700}
+  .tbl-wrap{overflow-x:auto; border-radius:14px}
+  .note{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:14px}
+  footer{margin-top:48px; text-align:center; color:var(--muted); font-size:13px; font-style:italic}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mono">Напитки · Что, откуда и зачем</div>
+  <h1>Игорь &amp; Вероника</h1>
+  <div class="sub">Суббота, 12 сентября 2026 · Кораблик Elizabete 16:00 · Ужин в Hercogs 18:30</div>
+  <div class="facts">
+    <span>🛥 Кораблик ~26–29 чел</span>
+    <span>🍽 Ужин 14 взрослых (7 м / 7 ж) + фотограф</span>
+    <span>🍷 Вино €248.66 · Spirits&amp;Wine</span>
+    <span>🥃 Крепкое + кола €227.38 · Barbora</span>
+    <span>💶 Итого €476.04</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ================= ИГРИСТОЕ ================= -->
+  <section>
+    <h2>🥂 Игристое — 13 бутылок</h2>
+    <p class="lead">Кораблик: 6 сухого + 3 сладкого. Ужин: 2 сухого (первый тост) + 2 полусладкого (к торту). Всё охладить накануне до 6–8 °C.</p>
+    <div class="grid">
+      <div class="card"><span class="qty">×8 · €7.49</span>
+        <div class="meta">Италия · Венето · Prosecco DOC Treviso</div>
+        <h3>Mionetto Prosecco DOC Treviso Brut</h3>
+        <p>Сорт Глера, 11%, brut (сухое). Mionetto — один из самых известных домов просекко, основан в 1887 году в Вальдоббьядене. Лёгкое, свежее: зелёное яблоко, груша, цветы, мелкий пузырёк.</p>
+        <div class="why"><span class="pill">Кораблик 6</span><span class="pill">Ужин 2 — первый тост</span> Безопасный выбор для большой компании: узнаваемая марка, все пьют легко, цена по акции (обычно €9–10).</div>
+      </div>
+      <div class="card"><span class="qty">×3 · €8.59</span>
+        <div class="meta">Италия · Пьемонт · Asti DOCG</div>
+        <h3>Zonin Asti DOCG</h3>
+        <p>Сорт Москато Бьянко, всего 7% алкоголя, сладкое. Дом Zonin — крупнейшая семейная винодельня Италии (с 1821 г.). Ароматное: персик, виноград, мёд, цветы апельсина.</p>
+        <div class="why"><span class="pill">Кораблик 3</span> Для тех, кто не любит сухое, и для женщин, которые «только бокальчик»: сладкое, лёгкое, не пьянит. Asti DOCG — высший статус региона.</div>
+      </div>
+      <div class="card"><span class="qty">×2 · €7.99</span>
+        <div class="meta">Италия · Венето · Prosecco DOC</div>
+        <h3>Felicita Prosecco Demi-Sec</h3>
+        <p>Глера, 11%, demi-sec — полусладкое (заметно слаще brut, но не десертное). Фруктовое, мягкое, с яблоком и белым персиком.</p>
+        <div class="why"><span class="pill">Ужин 2 — к торту</span> Сладкое игристое к торту в 20:15 — классическое сочетание; сухой brut с тортом «кислит».</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= БЕЛОЕ ================= -->
+  <section>
+    <h2>🤍 Белое вино — 7 бутылок (ужин)</h2>
+    <p class="lead">Три стиля по нарастанию сладости: сухое → полусухое → полусладкое, чтобы каждой гостье было что выбрать. Подавать охлаждённым 8–10 °C.</p>
+    <div class="grid">
+      <div class="card"><span class="qty">×3 · €11.79</span>
+        <div class="meta">Новая Зеландия · Marlborough · сухое</div>
+        <h3>Marlborough Sun Sauvignon Blanc</h3>
+        <p>Совиньон Блан, 12.5%. Бренд семейного хозяйства Saint Clair Family Estate — одного из самых титулованных в Мальборо. Классика региона: крыжовник, маракуйя, лайм, свежая трава, яркая кислотность.</p>
+        <div class="why"><span class="pill ok">Основное белое</span> Новозеландский совиньон — самое «любимое женщинами» сухое белое в мире. Здесь не подделка из другого региона, а настоящий Marlborough — за это и доплата.</div>
+      </div>
+      <div class="card"><span class="qty">×2 · €7.69</span>
+        <div class="meta">Германия · Рислинг · полусухое (feinherb)</div>
+        <h3>Fritz Willi Riesling Feinherb</h3>
+        <p>Рислинг, 11%. «Feinherb» по немецкой шкале — между сухим и полусладким: лёгкая сладость уравновешена кислотностью. Яблоко, лайм, персик, минеральность; очень питкое.</p>
+        <div class="why"><span class="pill">Компромисс</span> Для тех, кому совиньон «слишком кислый», а Алазани — «слишком сладко». Рислинг отлично идёт к любой еде на банкете.</div>
+      </div>
+      <div class="card"><span class="qty">×2 · €6.99</span>
+        <div class="meta">Грузия · Кахетия · полусладкое</div>
+        <h3>Teliani Valley Alazani Valley (белое)</h3>
+        <p>Ркацители + Мцване, 11.5%, полусладкое. Teliani Valley — одна из крупнейших и самых стабильных виноделен Грузии (Телави). Белые фрукты, груша, мягкая сладость.</p>
+        <div class="why"><span class="pill">Полусладкое</span> Обязательный пункт по просьбе Вероники: «полусладкое должно быть». Алазанская долина — самое узнаваемое полусладкое белое.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КРАСНОЕ ================= -->
+  <section>
+    <h2>❤️ Красное вино — 5 бутылок (ужин)</h2>
+    <p class="lead">Сухая Риоха как основное + грузинское полусладкое. Комнатная температура, открыть за 20–30 минут.</p>
+    <div class="grid">
+      <div class="card"><span class="qty">×3 · €7.49</span>
+        <div class="meta">Испания · Rioja DOCa · Crianza · сухое</div>
+        <h3>Marqués de Cáceres Crianza</h3>
+        <p>Темпранильо (с добавкой Гарначи и Грасиано), 13.5%. Crianza = минимум 12 месяцев в дубовой бочке + выдержка в бутылке. Дом основан в 1970 г. Энрике Форнером, один из самых продаваемых Rioja в мире. Спелая вишня, слива, ваниль, мягкие танины.</p>
+        <div class="why"><span class="pill ok">Основное красное</span> Известный бренд, выдержанное в дубе вино по цене простого столового (акция от €8.99). Универсально к мясу и сыру, нравится большинству.</div>
+      </div>
+      <div class="card"><span class="qty">×2 · €9.99</span>
+        <div class="meta">Грузия · Кахетия · Kindzmarauli · полусладкое</div>
+        <h3>Teliani Valley Kindzmarauli</h3>
+        <p>Саперави, 12%, природно-полусладкое из микрозоны Киндзмараули (Кварели). Естественная сладость — брожение останавливают холодом, сахар не добавляют. Чёрная смородина, ежевика, гранат, бархатистое.</p>
+        <div class="why"><span class="pill">Полусладкое</span> Самое известное грузинское полусладкое; Teliani Valley — лучший производитель в этой цене. Дороже Dabo (€6.49), но заметно чище и богаче.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КРЕПКОЕ ================= -->
+  <section>
+    <h2 class="a">🥃 Крепкое — 4,3 л на 7 мужчин (Barbora)</h2>
+    <p class="lead">Виски — основное на вечер, Martell — на старт и тосты. Пьющие мужчины: Игорь, Михаил, Юрий, Айгар, Дима, Аркадий, Артур; папа Вероники за рулём — реальная норма ~0,6 л на человека.</p>
+    <div class="grid">
+      <div class="card"><span class="qty">×2 · €33.99</span>
+        <div class="meta">Шотландия · Highland · Single Malt · 10 лет · 0,7 л</div>
+        <h3>Glenmorangie The Original</h3>
+        <p>40%. Винокурня в Тейне (с 1843 г.) с самыми высокими перегонными кубами в Шотландии — отсюда очень лёгкий, чистый спирт. Выдержка в бурбонных бочках: цитрус, ваниль, персик, мёд. Без торфа и дыма.</p>
+        <div class="why"><span class="pill ok">Основной виски</span> Самый «дружелюбный» сингл-молт: нравится и тем, кто пьёт виски постоянно, и тем, кто редко. Barbora €33.99 против €36.99–39.99 в других магазинах.</div>
+      </div>
+      <div class="card"><span class="qty">×2 · €27.99</span>
+        <div class="meta">Северная Ирландия · Single Malt · 10 лет · 0,7 л</div>
+        <h3>Bushmills 10 Year Old</h3>
+        <p>40%. Старейшая лицензированная винокурня мира (лицензия 1608 г., графство Антрим). Тройная перегонка, выдержка в бурбонных и хересных бочках: мёд, ваниль, яблоко, молочный шоколад. Мягче и слаще шотландского.</p>
+        <div class="why"><span class="pill">Второй виски</span> Ирландский стиль «пьётся сам» — идеален для долгого вечера и тостов. Сингл-молт 10 лет за €28 — лучшая цена/качество в категории.</div>
+      </div>
+      <div class="card"><span class="qty">×3 · €29.99</span>
+        <div class="meta">Франция · Cognac · VSOP · 0,5 л</div>
+        <h3>Martell VSOP (Aged in Red Barrels)</h3>
+        <p>40%. Martell — старейший из великих коньячных домов (1715 г.). VSOP = минимум 4 года выдержки (у Martell — заметно дольше). Особенность дома — акцент на крю Borderies и «красные бочки» из мелкозернистого дуба: мягкий, фруктовый, слива, курага, лёгкий дуб, без резкости.</p>
+        <div class="why"><span class="pill">На старт и тосты</span> Просьба Вероники — именно Martell. В Barbora только 0,5 л и лимит 3 бутылки (1,5 л ≈ 2 × 0,7). Цена за литр та же, что у 0,7 в Alkoutlet/Rimi (€43.49).</div>
+      </div>
+    </div>
+    <div class="note">📊 <b>Итого крепкого:</b> виски 2,8 л + коньяк 1,5 л = <b>4,3 л</b>. При норме 0,7 л на человека нужно 4,9 л — если к 22:00 идёт быстро, координатор докупает 1 бутылку (Rimi/Circle K рядом с Hercogs). Оставшиеся закрытые бутылки — домой.</div>
+  </section>
+
+  <!-- ================= БЕЗАЛКОГОЛЬНОЕ ================= -->
+  <section>
+    <h2 class="g">🥤 Безалкогольное</h2>
+    <div class="grid">
+      <div class="card"><span class="qty">×5 · €1.99</span><div class="meta">Латвия · сок · 1 л</div><h3>Cido яблочный</h3><p>Латвийский бренд №1, 100% сок из концентрата. На кораблик — для детей и непьющих.</p></div>
+      <div class="card"><span class="qty">×4 · €2.29</span><div class="meta">Латвия · нектар · 1 л</div><h3>Cido апельсиновый нектар</h3><p>На ужин. Апельсиновый — самый универсальный: и детям, и для смешивания.</p></div>
+      <div class="card"><span class="qty">×30 · €0.59</span><div class="meta">Латвия · вода негазированная · 0,5 л</div><h3>Mangaļi Sports</h3><p>Природная вода из Манга́льской скважины (Рига), крышка «спорт» — удобно на палубе. По бутылке каждому гостю на кораблик.</p></div>
+      <div class="card"><span class="qty">×5 · €2.49</span><div class="meta">Barbora · 2 × 1,5 л</div><h3>Coca-Cola (4 упаковки) + Coca-Cola Zero (1)</h3><p>15 л колы на ужин — под виски, детям и на танцы. Упаковка 2×1,5 л в Barbora по €0.83/л — вдвое дешевле, чем 2 л у S&amp;W.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= ТАБЛИЦА ================= -->
+  <section>
+    <h2>🧾 Сводная таблица закупки</h2>
+    <div class="tbl-wrap">
+    <table>
+      <tr><th>Позиция</th><th>Откуда</th><th>Кол-во</th><th>Цена</th><th>Сумма</th><th>Магазин</th></tr>
+      <tr><td>Mionetto Prosecco DOC Treviso Brut 0.75</td><td>Италия, Венето</td><td>8</td><td>€7.49</td><td>€59.92</td><td rowspan="11" style="vertical-align:middle"><b>Spirits&amp;Wine</b><br><a href="https://www.spiritsandwine.lv/lv/cart/" target="_blank">корзина</a><br><small>лучше купить в магазине Andrejostas iela 5 — возврат до 30%</small></td></tr>
+      <tr><td>Zonin Asti DOCG 0.75</td><td>Италия, Пьемонт</td><td>3</td><td>€8.59</td><td>€25.77</td></tr>
+      <tr><td>Felicita Prosecco Demi-Sec 0.75</td><td>Италия, Венето</td><td>2</td><td>€7.99</td><td>€15.98</td></tr>
+      <tr><td>Marlborough Sun Sauvignon Blanc 0.75</td><td>Новая Зеландия</td><td>3</td><td>€11.79</td><td>€35.37</td></tr>
+      <tr><td>Fritz Willi Riesling Feinherb 0.75</td><td>Германия</td><td>2</td><td>€7.69</td><td>€15.38</td></tr>
+      <tr><td>Teliani Valley Alazani Valley (белое) 0.75</td><td>Грузия</td><td>2</td><td>€6.99</td><td>€13.98</td></tr>
+      <tr><td>Marqués de Cáceres Crianza 0.75</td><td>Испания, Rioja</td><td>3</td><td>€7.49</td><td>€22.47</td></tr>
+      <tr><td>Teliani Valley Kindzmarauli 0.75</td><td>Грузия</td><td>2</td><td>€9.99</td><td>€19.98</td></tr>
+      <tr><td>Cido яблочный 1 л</td><td>Латвия</td><td>5</td><td>€1.99</td><td>€9.95</td></tr>
+      <tr><td>Cido апельсиновый нектар 1 л</td><td>Латвия</td><td>4</td><td>€2.29</td><td>€9.16</td></tr>
+      <tr><td>Mangaļi Sports вода 0.5 л</td><td>Латвия</td><td>30</td><td>€0.59</td><td>€17.70</td></tr>
+      <tr class="total"><td colspan="4">Spirits&amp;Wine (скидки −€23.30, тара +€3.00)</td><td>€248.66</td><td></td></tr>
+      <tr><td>Glenmorangie The Original 0.7</td><td>Шотландия</td><td>2</td><td>€33.99</td><td>€67.98</td><td rowspan="5" style="vertical-align:middle"><b>Barbora</b><br><a href="https://barbora.lv/" target="_blank">корзина</a><br><small>доставка бесплатно</small></td></tr>
+      <tr><td>Bushmills 10 YO 0.7</td><td>Сев. Ирландия</td><td>2</td><td>€27.99</td><td>€55.98</td></tr>
+      <tr><td>Martell VSOP 0.5</td><td>Франция, Cognac</td><td>3</td><td>€29.99</td><td>€89.97</td></tr>
+      <tr><td>Coca-Cola 2×1.5 л</td><td>—</td><td>4</td><td>€2.49</td><td>€9.96</td></tr>
+      <tr><td>Coca-Cola Zero 2×1.5 л</td><td>—</td><td>1</td><td>€2.49</td><td>€2.49</td></tr>
+      <tr class="total"><td colspan="4">Barbora (с тарой)</td><td>€227.38</td><td></td></tr>
+      <tr class="total"><td colspan="4">ВСЕГО НАПИТКИ</td><td>€476.04</td><td></td></tr>
+    </table>
+    </div>
+  </section>
+
+  <!-- ================= ЛОГИСТИКА ================= -->
+  <section>
+    <h2 class="a">📦 Кораблик и Hercogs — что куда</h2>
+    <p class="lead">Две отдельные коробки, подписать при закупке, чтобы не перепутать.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="meta">🛥 Кораблик Elizabete · 16:00–18:00 · ~26–29 чел · привезти на пристань к 15:45</div>
+        <h3>Коробка «КОРАБЛИК»</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th>Что</th><th>Кол-во</th><th>Расчёт</th></tr>
+          <tr><td>Mionetto Prosecco Brut (сухое)</td><td><b>6</b></td><td>36 бокалов</td></tr>
+          <tr><td>Zonin Asti (сладкое)</td><td><b>3</b></td><td>18 бокалов → всего 54 ≈ 2 на взрослого</td></tr>
+          <tr><td>Cido яблочный сок 1 л</td><td><b>5</b></td><td>дети + непьющие</td></tr>
+          <tr><td>Вода Mangaļi 0,5 л</td><td><b>30</b></td><td>по бутылке каждому</td></tr>
+          <tr><td>Пирожки</td><td><b>90</b></td><td>~3 на человека, забрать из пекарни утром</td></tr>
+          <tr><td>Одноразовые бокалы для игристого, стаканы, салфетки, штопор не нужен, мусорные пакеты, лёд/термосумка</td><td>—</td><td>купить с продуктами</td></tr>
+        </table></div>
+        <div class="why">Игристое охладить с вечера пятницы, везти в термосумке. У ЗАГСа на улице не открывать — всё пьём на борту. Ответственный: <b>назначить</b> (не молодожёны).</div>
+      </div>
+      <div class="card">
+        <div class="meta">🍽 Hercogs, Mārupe · 18:30–24:00 · 14 взрослых + фотограф · завезти накануне 11.09</div>
+        <h3>Коробка «HERCOGS»</h3>
+        <div class="tbl-wrap"><table>
+          <tr><th>Что</th><th>Кол-во</th><th>Когда подавать</th></tr>
+          <tr><td>Mionetto Prosecco Brut</td><td><b>2</b></td><td>18:30 первый тост (в холодильник ресторана)</td></tr>
+          <tr><td>Felicita Prosecco Demi-Sec</td><td><b>2</b></td><td>20:15 к торту (в холод)</td></tr>
+          <tr><td>Marlborough Sun Sauvignon Blanc (сухое)</td><td><b>3</b></td><td rowspan="3">белое — на столе с начала ужина, в холоде</td></tr>
+          <tr><td>Fritz Willi Riesling Feinherb (полусухое)</td><td><b>2</b></td></tr>
+          <tr><td>Teliani Alazani (полусладкое)</td><td><b>2</b></td></tr>
+          <tr><td>Marqués de Cáceres Crianza (сухое)</td><td><b>3</b></td><td rowspan="2">красное — открыть к горячему</td></tr>
+          <tr><td>Teliani Kindzmarauli (полусладкое)</td><td><b>2</b></td></tr>
+          <tr><td>Martell VSOP 0,5</td><td><b>3</b></td><td>с первого тоста и на речи</td></tr>
+          <tr><td>Glenmorangie Original</td><td><b>2</b></td><td rowspan="2">виски — ставить после горячего, к танцам</td></tr>
+          <tr><td>Bushmills 10</td><td><b>2</b></td></tr>
+          <tr><td>Coca-Cola 1,5 л (4 обычных + 1 Zero упак.)</td><td><b>10 бут.</b></td><td>весь вечер, в холод</td></tr>
+          <tr><td>Cido апельсиновый нектар 1 л</td><td><b>4</b></td><td>детям и к виски</td></tr>
+        </table></div>
+        <div class="why">Итого на ужин: 4 игристого · 12 вина · 7 бут. крепкого · 15 л колы · 4 л сока. Сбор за свой алкоголь ~€50 (€5/чел) — в конверт координатору. Лишнее закрытое вино → вернуть в S&amp;W (вс–чт).</div>
+      </div>
+    </div>
+    <div class="note">🔁 <b>Возврат нераспечатанного (Spirits&amp;Wine):</b> только для покупок в магазине Andrejostas iela 5 от €200 — до 30% бутылок, 14 дней, вс–чт 12:00–19:00, предупредить за день: +371 27 867 807. Онлайн-заказ — порог €500, нам не подходит. Поэтому вино покупаем в магазине, показывая корзину как список.</div>
+  </section>
+
+  <footer>Обновлено 08.09.2026 · Цены на день составления, акции могут закончиться</footer>
+</div>
+</body>
+</html>
