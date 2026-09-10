@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Топ-50 песен для первого танца · Игорь и Вероника · 12.09.2026</title>
+<style>
+  :root{
+    --bg:#fbf7f2; --card:#ffffff; --ink:#2e2a26; --muted:#6f675f;
+    --line:#e9ddd0; --blush:#c98a86; --blush-soft:#f3e3e1; --gold:#b08a4e;
+    --green:#3f7d5a; --green-soft:#e7f1ea; --red:#b0473f; --red-soft:#f9e6e4;
+    --amber:#9a6a1e; --amber-soft:#fbecd6; --shadow:0 6px 24px rgba(90,70,50,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 18px 64px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:600; line-height:1.2}
+  a{color:var(--blush); text-decoration:none} a:hover{text-decoration:underline}
+  header.hero{text-align:center; padding:44px 18px 30px;
+    background:linear-gradient(180deg,#fff 0%,var(--blush-soft) 100%); border-bottom:1px solid var(--line)}
+  .hero .mono{letter-spacing:.32em; text-transform:uppercase; font-size:12px; color:var(--gold)}
+  .hero h1{font-size:clamp(26px,5vw,42px); margin:.18em 0 .12em}
+  .hero .sub{color:var(--muted); font-style:italic; font-size:16px}
+  .facts{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:16px}
+  .facts span{background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:13px; box-shadow:var(--shadow)}
+  section{margin-top:34px}
+  h2{font-size:clamp(20px,3.4vw,28px); margin:0 0 6px; position:relative; padding-left:16px}
+  h2::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:4px; background:var(--blush); border-radius:4px}
+  .lead{color:var(--muted); margin:0 0 14px; font-size:14px}
+  .note{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--amber); border-radius:12px; padding:12px 16px; font-size:14px; margin:12px 0}
+  .legend{display:flex; flex-wrap:wrap; gap:8px; font-size:13px; margin:10px 0 14px}
+  .legend span{background:#fff; border:1px solid var(--line); border-radius:8px; padding:4px 10px}
+  .toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:10px 0 14px}
+  .toolbar button, .toolbar select{border:1px solid var(--line); background:#fff; border-radius:8px; padding:7px 12px; font-size:13px; cursor:pointer; color:var(--ink)}
+  .toolbar button.active{background:var(--blush-soft); border-color:var(--blush); color:#9a4f4b; font-weight:600}
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); font-size:14px}
+  th{background:var(--blush-soft); color:#9a4f4b; text-align:left; padding:10px 10px; font-size:12px; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap}
+  td{padding:10px 10px; border-top:1px solid var(--line); vertical-align:top}
+  td.rank{font-family:Georgia,serif; font-size:18px; color:var(--gold); width:44px; text-align:center}
+  td.song b{font-size:15px}
+  td.song .artist{color:var(--muted); font-size:13px}
+  .tag{display:inline-block; border-radius:6px; padding:1px 8px; font-size:11px; font-weight:600; margin:0 4px 4px 0; white-space:nowrap}
+  .t-slow{background:var(--green-soft); color:var(--green)}
+  .t-mid{background:var(--amber-soft); color:var(--amber)}
+  .t-fast{background:var(--red-soft); color:var(--red)}
+  .t-q{background:#eee; color:#666}
+  .t-ru{background:#e8eef8; color:#3b5a8a}
+  .t-en{background:#f0e8f8; color:#6a4a8a}
+  .t-I{background:#e6f0f7; color:#2c5b7c}
+  .t-V{background:var(--blush-soft); color:#9a4f4b}
+  .t-both{background:#efe9dc; color:#6f5a2e}
+  .why{color:var(--muted); font-size:13px}
+  .listen a{display:inline-block; margin:0 6px 4px 0; font-size:13px; padding:4px 9px; border:1px solid var(--line); border-radius:8px; background:#fff}
+  .vote{white-space:nowrap}
+  .vote button{border:1px solid var(--line); background:#fff; border-radius:8px; width:34px; height:30px; cursor:pointer; font-size:15px; margin-right:3px}
+  .vote button.on-love{background:var(--red-soft); border-color:var(--red)}
+  .vote button.on-ok{background:var(--green-soft); border-color:var(--green)}
+  .vote button.on-no{background:#eee; border-color:#999; opacity:.7}
+  tr.no td{opacity:.45}
+  tr.love td.rank{color:var(--red)}
+  tr.top10 td{background:#fffdf9}
+  #shortlist{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--red); border-radius:12px; padding:12px 16px; font-size:14px; margin:12px 0; min-height:48px}
+  #shortlist ol{margin:6px 0 0 18px; padding:0}
+  footer{margin-top:44px; text-align:center; color:var(--muted); font-size:13px; font-style:italic}
+  @media (max-width:760px){
+    th:nth-child(5), td:nth-child(5){display:none}
+    td.song .artist{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="mono">Первый танец · 50 кандидатов на прослушивание</div>
+  <h1>Игорь &amp; Вероника</h1>
+  <div class="sub">Суббота, 12 сентября 2026 · Hercogs · после первого тоста</div>
+  <div class="facts">
+    <span>📅 Все песни не старше 4 лет (с 12.09.2022)</span>
+    <span>🐢 Медленно или покачивание — без хореографии</span>
+    <span>🎧 Игорю — современный звук · Веронике — Меладзе и большой вокал</span>
+    <span>⏱ Идеал ≤ 3:30, длиннее — DJ режет второй куплет</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>Как слушать</h2>
+    <p class="lead">Отмечайте по ходу: ❤ — в шорт-лист, 👍 — нормально, ✖ — нет. Шорт-лист собирается вверху, его можно скопировать и переслать DJ. Оценки живут, пока открыта страница — не перезагружайте, пока не скопировали.</p>
+    <div class="legend">
+      <span>🐢 медленно — классический первый танец</span>
+      <span>🚶 средне — покачивание, ~95–105 bpm</span>
+      <span>🏃 бодро — скорее открыть танцпол, чем первый танец</span>
+      <span>? — темп или текст не подтверждён, послушать в первую очередь</span>
+      <span>И — под вкус Игоря · В — под вкус Вероники · оба</span>
+    </div>
+    <div class="note">📐 <b>Как отбирал:</b> пул — русскоязычные и мировые релизы о любви за 4 года (~10 000). Фильтры: дата → темп 65–105 bpm → текст про «нас/дом/навсегда» без расставаний и мата → современный саунд + мелодичный вокал → длина → «не стыдно через 10 лет» → проверка даты и содержания по источникам (Wink «Лучшие песни 2025», the fair «160 песен для первого танца», Dance From Home 2025, Apple Music). Вылетели по дате: Мот «Свадебная» (2017), MACAN «Кино» (2020), Гагарина «Навек» (2013), JVKE «Golden Hour» (июль 2022 — не хватило двух месяцев). Вылетели по тексту: Моргенштерн «Последняя любовь» (про неверие в любовь), MACAN &amp; SCIRENA «IVL» (расставание). У Моргенштерна медленных песен о любви нет — «для Игоря» здесь артисты из его среды (Xcho, MACAN, Ramil', d4vd, SZA), которые умеют в балладу. Его собственный трек — на открытие танцпола.</div>
+  </section>
+
+  <section>
+    <h2>❤ Шорт-лист</h2>
+    <div id="shortlist"><span class="why">Пока пусто — нажимайте ❤ в таблице.</span></div>
+    <div class="toolbar">
+      <button onclick="copyShort()">📋 Скопировать шорт-лист</button>
+      <span class="why" id="copied"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Топ-50</h2>
+    <div class="toolbar">
+      <span class="why">Показать:</span>
+      <button class="active" data-f="all" onclick="setFilter('all',this)">все</button>
+      <button data-f="ru" onclick="setFilter('ru',this)">русские</button>
+      <button data-f="en" onclick="setFilter('en',this)">зарубежные</button>
+      <button data-f="slow" onclick="setFilter('slow',this)">только 🐢</button>
+      <button data-f="top" onclick="setFilter('top',this)">топ-10</button>
+      <button data-f="love" onclick="setFilter('love',this)">только ❤</button>
+      <button data-f="q" onclick="setFilter('q',this)">только «?»</button>
+    </div>
+    <div class="tbl-wrap">
+    <table id="tbl">
+      <thead><tr><th>#</th><th>Песня</th><th>Год</th><th>Темп · кому</th><th>Почему в списке</th><th>Слушать</th><th>Оценка</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>После прослушивания</h2>
+    <div class="note">🎯 <b>Мой прогноз:</b> первый танец — <b>Меладзе &amp; Джанабаева «Где ты есть»</b> (единственная песня, где текст буквально про вас: «где ты есть — там мой дом»). Запасной — <b>JONY «Красивая»</b>. Второй медленный, когда выходят все пары — <b>«Die With a Smile»</b>. Открыть танцпол — трек Моргенштерна на выбор Игоря. Но решает не таблица, а минута покачивания вдвоём под каждую из трёх.</div>
+    <div class="note">⚠️ <b>Проверить у первых трёх:</b> длину (если больше 3:30 — попросить DJ убрать второй куплет), наличие чистой студийной версии без клипа, и что у DJ есть файл, а не стриминг — в Mārupe интернет может подвести.</div>
+  </section>
+
+  <footer>Составлено 09.09.2026 · Даты релизов проверены по Apple Music / Wikipedia / профильным подборкам, кроме позиций с «?»</footer>
+</div>
+
+<script>
+const SONGS = [
+ // rank, title, artist, year, lang, tempo(slow/mid/fast/q), fit(I/V/both), note, flagged(bool)
+ [1,"Где ты есть","Валерий Меладзе & Альбина Джанабаева","06.2026","ru","slow","V","Новая песня Меладзе, музыка и слова Константина Меладзе. Припев «Я всё смогу, пока мы вдвоём / Где ты есть — там мой дом» — буквально ваша история. Дуэт мужчина + женщина, клип из семейного архива. Родители услышат каждое слово. Проверить длину.",false],
+ [2,"Красивая","JONY","02.2026","ru","slow","both","«В этом шумном мире тишина ты моя». Jony — Меладзе своего поколения: кавказская мелодика и драма на современном продакшене. Здесь сходятся оба вкуса.",false],
+ [3,"Ночью на кухне","ANNA ASTI","10.2022","ru","mid","both","Двое танцуют дома на кухне — снова ваша «домашняя» история. Голос большой, знают все от 25 до 60. Темп ~100 bpm — покачивание. На дату свадьбы песне 3 г. 11 мес. — проходит впритык.",false],
+ [4,"Die With a Smile","Lady Gaga & Bruno Mars","08.2024","en","slow","both","Самый частый первый танец 2025 в мире. Под неё умеет покачиваться любой зал. 4:12 — DJ режет. Родители слов не поймут, но мелодию знают все.",false],
+ [5,"Ordinary","Alex Warren","02.2025","en","slow","both","«Свадебный гимн 2025»: любовь делает обычную жизнь священной. Тёплая, строится к припеву, 3:06.",false],
+ [6,"Мне так повезло","Мари Краймбрери","2024","ru","mid","V","«Песня года 2024», радиохит. Текст — благодарность «мне так повезло с тобой». Понятно всем поколениям.",false],
+ [7,"Баллада","Xcho & МОТ","04.2024","ru","slow","I","Самый близкий к среде Моргенштерна трек, который при этом медленный и про любовь. Текст чуть грустнее, чем нужно на свадьбе — послушать.",false],
+ [8,"Силуэт","Ваня Дмитриенко & Аня Пересильд","10.2025","ru","mid","both","Нежный дуэт из фильма «Алиса в Стране чудес», верхушка чартов. Молодо, кинематографично. Для родителей — чужое.",false],
+ [9,"Такая нежная любовь","Кирилл Мойтон & Beautiful Boys","02.2025","ru","slow","both","Саундтрек свадебных рилс 2025 — медленно, воздушно, ни одного лишнего слова.",false],
+ [10,"Pointless","Lewis Capaldi","12.2022","en","slow","V","«I bring her coffee in the morning, she brings me inner peace». Чистая фортепианная баллада о быте вдвоём. Вокал — уровень Меладзе.",false],
+ [11,"С неба","ELMAN & TRIDA","2025","ru","mid","both","Любовь, которая «падает с неба» и меняет порядок вещей. Мягкий поп, лиричный.",false],
+ [12,"Намёк на нас","Мот","2023","ru","mid","both","Самый прослушиваемый трек о нежных чувствах 2023 по версии Love Radio. Темп проверить.",true],
+ [13,"Как любовь твою понять","JONY & ANNA ASTI","2023","ru","mid","both","Дуэт двух главных голосов новой русской лирики. Текст — вопрос, не ответ; послушать, подходит ли на свадьбу.",true],
+ [14,"Birds of a Feather","Billie Eilish","05.2024","en","mid","I","«I want you to stay till I'm in the grave». Мечтательно, ~105 bpm, покачивание. Современный звук — для Игоря.",false],
+ [15,"Настоящая","Ваня Дмитриенко","2025","ru","slow","both","Искренняя поп-баллада о настоящих чувствах без масок.",false],
+ [16,"Carry You Home","Alex Warren","2024","en","mid","both","«Я донесу тебя домой» — про то, чтобы держаться вместе несмотря ни на что.",false],
+ [17,"Lose Control","Teddy Swims","06.2023","en","slow","both","Соул, страстно, медленно. Текст про то, что без неё «теряю контроль» — не классический свадебный, но пары берут часто.",false],
+ [18,"Привет","Женя Трофимов & Комната культуры","11.2024","ru","mid","both","Тёплый инди-поп, вирусный 2024–25, 3:36. В свадебных подборках — «особенная».",false],
+ [19,"All My Love","Coldplay","2024","en","slow","V","Фортепианная баллада с последнего альбома. Медленно, красиво, без риска.",false],
+ [20,"I Think They Call This Love","Elliot James Reay","2024","en","slow","both","Ретро в духе Элвиса, под неё естественно вальсировать. Молодые пары полюбили в 2025.",false],
+ [21,"Forever and Ever and Always","Ryan Mack","2023","en","slow","both","Вирусный свадебный трек: «навсегда и всегда». Простой, честный.",false],
+ [22,"Кухни","Бонд с кнопкой","2025","ru","slow","both","Про разговоры до ночи и жизнь в мелочах. Камерно, «дом». Не про любовь напрямую — про то, из чего она состоит.",false],
+ [23,"Мурашками","Мот","2023","ru","mid","both","Второй лирический хит Мота 2023. Темп проверить.",true],
+ [24,"Люби меня","Ramil'","2023","ru","mid","I","Ramil' — из мира Игоря, но всегда мелодично. Текст и темп проверить.",true],
+ [25,"Here With Me","d4vd","09.2022","en","slow","I","«I don't care how long it takes, as long as I'm with you». Медленно, современно. Релиз 16.09.2022 — на дату свадьбы 4 года минус 4 дня.",false],
+ [26,"Say Yes to Heaven","Lana Del Rey","2023","en","slow","V","«If you dance, I'll dance». Медленно, атмосферно, вокал-бархат.",false],
+ [27,"Margaret","Lana Del Rey feat. Bleachers","2023","en","slow","both","Написана про помолвку друга: «when you know, you know». Свадебный текст в чистом виде.",false],
+ [28,"Everywhere, Everything","Noah Kahan","10.2022","en","mid","both","Фолк: «буду любить тебя, пока мы не станем едой для червей» — с юмором про «навсегда».",false],
+ [29,"Perfect For Me","Bradley Marshall","2024","en","slow","both","Из подборки хореографов первого танца 2025: близко, медленно, без сложных движений.",false],
+ [30,"Цветаева","Ваня Дмитриенко","03.2025","ru","mid","both","Хит 2025, клип с Пересильд. Средний темп — ближе к покачиванию.",false],
+ [31,"Шёлк","Ваня Дмитриенко","2025","ru","slow","both","Нежно и интимно, но текст про «красивое и опасно хрупкое» — послушать внимательно.",true],
+ [32,"Daisies","Justin Bieber","07.2025","en","mid","I","Мягко, современно. В тексте вопрос «любишь или нет» — на свадьбе может резать слух.",true],
+ [33,"Beautiful Things","Benson Boone","01.2024","en","slow","both","Тихий куплет — громкий припев. Красиво, но текст про страх потерять; и танцевать под взрыв припева непросто.",true],
+ [34,"Sweet Symphony","Joy Oladokun & Chris Stapleton","2023","en","slow","both","Дуэт, соул-фолк, медленно. Неожиданный и негромкий выбор.",false],
+ [35,"Camera","Ed Sheeran","2025","en","slow","both","Про то, что не нужны фото, чтобы помнить этот момент. Темп проверить.",true],
+ [36,"Игры","Валерий Меладзе","2025","ru","q","V","Второй новый Меладзе. Темп и текст не проверены — послушать ради Вероники.",true],
+ [37,"Эйфория","JONY","2026","ru","q","both","Новый Jony 2026. Содержание не проверено.",true],
+ [38,"Кино 2","MACAN","12.2022","ru","q","I","Продолжение «Кино» (2020), которое вылетело по дате. MACAN — мир Игоря. Текст проверить.",true],
+ [39,"Я хочу быть…","ANNA ASTI","2025","ru","q","V","Из альбома 2025. Не проверено — послушать.",true],
+ [40,"Музеи и театры","NAVAI","2024","ru","q","both","Из подборки the fair «открытия». Дату и темп проверить.",true],
+ [41,"Slow It Down","Benson Boone","2024","en","mid","both","Мягче, чем Beautiful Things. Про то, чтобы остановиться и быть рядом.",true],
+ [42,"That Part","Lauren Spencer Smith","2022","en","slow","V","Баллада о «той части» любви, которую не видно снаружи. Дату проверить (граница 4 лет).",true],
+ [43,"Snooze","SZA","12.2022","en","slow","I","R&B, медленно: «you just too important». Самый «игорев» звук в списке. Проверить текст на резкие слова.",true],
+ [44,"Give Me Everything","Archer Marsh","2024","en","slow","both","Струнная версия из «Бриджертонов» — вальс, кинематографично.",true],
+ [45,"Miles Song","Cleo Sol","2023","en","slow","both","Тихий соул. Для тех, кто хочет «не как у всех». Дату проверить.",true],
+ [46,"Tonight","PinkPantheress","2025","en","mid","I","Лёгкое, современное, покачивание. Скорее второй танец.",true],
+ [47,"feelslikeimfallinginlove","Coldplay","2024","en","mid","both","Светло и бодро — ближе к танцполу, чем к первому танцу.",false],
+ [48,"Воздушный сарафан","JONY","2024","ru","fast","both","Лето, лёгкость — на открытие танцпола, не на первый танец.",false],
+ [49,"Belong Together","Mark Ambor","2024","en","fast","both","Радостно и быстро — для пар, которые хотят веселиться, а не покачиваться.",false],
+ [50,"Stargazing","Myles Smith","2024","en","fast","both","Фолк-поп, бодро. Открыть танцпол после первого танца.",false]
+];
+
+const votes = {}; // in-memory
+const tempoTag = {slow:'<span class="tag t-slow">🐢 медленно</span>', mid:'<span class="tag t-mid">🚶 средне</span>', fast:'<span class="tag t-fast">🏃 бодро</span>', q:'<span class="tag t-q">? темп</span>'};
+const fitTag = {I:'<span class="tag t-I">И</span>', V:'<span class="tag t-V">В</span>', both:'<span class="tag t-both">оба</span>'};
+const langTag = {ru:'<span class="tag t-ru">RU</span>', en:'<span class="tag t-en">EN</span>'};
+
+function yt(q){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q);}
+function sp(q){return 'https://open.spotify.com/search/'+encodeURIComponent(q);}
+
+function render(){
+  const tb=document.getElementById('rows'); tb.innerHTML='';
+  for(const s of SONGS){
+    const [r,t,a,y,l,tp,f,n,fl]=s;
+    const q=a+' '+t;
+    const v=votes[r]||'';
+    const tr=document.createElement('tr');
+    tr.className=(r<=10?'top10 ':'')+(v?v+' ':'');
+    tr.dataset.rank=r; tr.dataset.lang=l; tr.dataset.tempo=tp; tr.dataset.flag=fl?'1':'0';
+    tr.innerHTML=`<td class="rank">${r}</td>
+      <td class="song"><b>${t}</b><br><span class="artist">${a}</span></td>
+      <td>${y}${fl?' <span class="tag t-q">?</span>':''}</td>
+      <td>${tempoTag[tp]}<br>${fitTag[f]} ${langTag[l]}</td>
+      <td class="why">${n}</td>
+      <td class="listen"><a href="${yt(q)}" target="_blank">▶ YouTube</a><a href="${sp(q)}" target="_blank">Spotify</a></td>
+      <td class="vote">
+        <button title="в шорт-лист" class="${v==='love'?'on-love':''}" onclick="vote(${r},'love')">❤</button>
+        <button title="нормально" class="${v==='ok'?'on-ok':''}" onclick="vote(${r},'ok')">👍</button>
+        <button title="нет" class="${v==='no'?'on-no':''}" onclick="vote(${r},'no')">✖</button>
+      </td>`;
+    tb.appendChild(tr);
+  }
+  applyFilter(); renderShort();
+}
+function vote(r,v){ votes[r]= (votes[r]===v? '' : v); render(); }
+let filter='all';
+function setFilter(f,btn){ filter=f; document.querySelectorAll('.toolbar button[data-f]').forEach(b=>b.classList.toggle('active',b===btn)); applyFilter(); }
+function applyFilter(){
+  document.querySelectorAll('#rows tr').forEach(tr=>{
+    const r=+tr.dataset.rank; let show=true;
+    if(filter==='ru') show=tr.dataset.lang==='ru';
+    else if(filter==='en') show=tr.dataset.lang==='en';
+    else if(filter==='slow') show=tr.dataset.tempo==='slow';
+    else if(filter==='top') show=r<=10;
+    else if(filter==='love') show=votes[r]==='love';
+    else if(filter==='q') show=tr.dataset.flag==='1';
+    tr.style.display=show?'':'none';
+  });
+}
+function shortList(){ return SONGS.filter(s=>votes[s[0]]==='love'); }
+function renderShort(){
+  const el=document.getElementById('shortlist'); const L=shortList();
+  if(!L.length){ el.innerHTML='<span class="why">Пока пусто — нажимайте ❤ в таблице.</span>'; return; }
+  el.innerHTML='<b>'+L.length+' в шорт-листе:</b><ol>'+L.map(s=>`<li>${s[2]} — «${s[1]}» (${s[3]})</li>`).join('')+'</ol>';
+}
+function copyShort(){
+  const L=shortList(); if(!L.length){ document.getElementById('copied').textContent='Шорт-лист пуст'; return; }
+  const txt='Первый танец — шорт-лист:\n'+L.map((s,i)=>`${i+1}. ${s[2]} — ${s[1]} (${s[3]})`).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copied').textContent='Скопировано ✓';}).catch(()=>{prompt('Скопируйте вручную:',txt);});
+}
+render();
+</script>
+</body>
+</html>
